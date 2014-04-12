@@ -1,6 +1,5 @@
 package mybatistest.service.impl;
 
-import mybatistest.dao.UserDao;
 import mybatistest.dao.impl.UserDaoImpl;
 import mybatistest.entity.User;
 import mybatistest.service.UserService;
