@@ -1,14 +1,18 @@
 package mybatistest.service.impl;
 
+import org.springframework.stereotype.Component;
+import mybatistest.dao.UserDao;
 import mybatistest.entity.User;
 import mybatistest.service.UserService;
 
-public class UserServiceImpl extends BaseServiceImpl<User, String> implements
+@Component
+public class UserServiceImpl extends BaseServiceImpl<User, UserDao> implements
 		UserService {
 
 	public String userLogin(String userNumber, String userPassword) {
 //		((UserDao) mainDao).getUserString("");
-		User user = mainDao.getByID("1");
+//		getMainDao().getUserString("1");
+		User user = getMainDao().getByID("1");
 		if (null == user) {
 			return "用户不存在！";
 		}
@@ -17,4 +21,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, String> implements
 		}
 		return "登录成功！";
 	}
+
+
+
 }

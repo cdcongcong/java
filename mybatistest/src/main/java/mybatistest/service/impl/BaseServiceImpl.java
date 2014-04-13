@@ -2,23 +2,23 @@ package mybatistest.service.impl;
 
 import java.io.Serializable;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import mybatistest.dao.BaseDao;
 import mybatistest.service.BaseService;
+@Component
+public abstract class BaseServiceImpl<T,  D > implements
+		BaseService<T, D> {
+	@Autowired
+	private D mainDao;
 
-public abstract class BaseServiceImpl<T, PK extends Serializable> implements
-		BaseService<T, PK> {
-
-	protected BaseDao<T, PK> mainDao;
-
-	public BaseDao<T, PK> getMainDao() {
+	//子类使用
+	protected D getMainDao() {
 		return mainDao;
 	}
 
-	public void setMainDao(BaseDao<T, PK> mainDao) {
-		this.mainDao = mainDao;
-	}
-
-	public T getByID(PK id) {
-		return  mainDao.getByID(id);
+	public T getByID(Serializable id) {
+		return ((BaseDao<T>) mainDao).getByID(id);
+//		return null;
 	};
 }
