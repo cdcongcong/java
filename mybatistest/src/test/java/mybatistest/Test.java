@@ -1,11 +1,7 @@
 package mybatistest;
 
-import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import mybatistest.dao.UserDao;
-import mybatistest.dao.impl.UserDaoImpl;
 import mybatistest.entity.User;
 import mybatistest.service.UserService;
 import mybatistest.service.impl.UserServiceImpl;
@@ -16,9 +12,9 @@ public class Test {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
 				"applicationContext.xml");
 		//打印自动注册的类
-		for (String beanName:ac.getBeanDefinitionNames()){
-			System.out.println(beanName);
-		}
+//		for (String beanName:ac.getBeanDefinitionNames()){
+//			System.out.println(beanName);
+//		}
 		// 注意定义成接口，并通过getBean方式取得Bean
 //		UserService userService = (UserService) ac.getBean("userServiceImpl");
 		UserService userService = ac.getBean(UserServiceImpl.class);

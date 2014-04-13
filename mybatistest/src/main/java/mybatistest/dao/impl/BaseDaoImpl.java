@@ -27,6 +27,7 @@ public class BaseDaoImpl<T> extends
 
 	}
 	
+	//SqlSessionDaoSupport没有提供注解注入
 	@Autowired
 	  public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
 		    super.setSqlSessionTemplate(sqlSessionTemplate);
