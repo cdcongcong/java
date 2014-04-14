@@ -8,7 +8,7 @@ public class User implements Serializable{
 	private String userID;
 	private String userNumber;
 	private String userName;
-	private String description;
+	private String remark;
 
 	/**
 	 * @return the userID
@@ -56,17 +56,17 @@ public class User implements Serializable{
 	}
 
 	/**
-	 * @return the description
+	 * @return the remark
 	 */
-	public String getDescription() {
-		return description;
+	public String getRemark() {
+		return remark;
 	}
 
 	/**
 	 * @param description the description to set
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 

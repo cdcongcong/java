@@ -2,9 +2,11 @@ package mybatistest;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import mybatistest.entity.User;
 import mybatistest.service.UserService;
 import mybatistest.service.impl.UserServiceImpl;
+import mybatistest.utils.DaoHelper;
 
 public class Test {
 
@@ -24,5 +26,11 @@ public class Test {
 		System.out.println(user.getUserName());
 		// 测试调接口的userLogin服务
 		System.out.println(userService.userLogin("1", "XXX"));
+		User newUser = new User();
+		newUser.setUserID(DaoHelper.getUUID());
+		newUser.setUserNumber("2");
+		newUser.setUserName("李四");
+		newUser.setRemark("");
+		userService.insertUser(newUser);
 	}
 }

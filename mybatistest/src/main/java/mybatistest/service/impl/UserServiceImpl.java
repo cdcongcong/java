@@ -1,6 +1,7 @@
 package mybatistest.service.impl;
 
 import org.springframework.stereotype.Service;
+
 import mybatistest.dao.UserDao;
 import mybatistest.entity.User;
 import mybatistest.service.UserService;
@@ -21,5 +22,11 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserDao> implements
 			return "密码不正确！";
 		}
 		return "登录成功！";
+	}
+
+	public String insertUser(User user) {
+		// TODO Auto-generated method stub
+		getMainDao().insertUser(user);
+		return user.getUserID();
 	}
 }

@@ -16,4 +16,11 @@
           from system_users 
          where user_id = #{id}
     </select>
+    
+<insert id="insertUser">
+  insert into system_users (user_id,user_number,user_name,remark)
+  values (#{userID},#{userNumber},#{userName},#{remark})
+</insert>
+
+    
 </mapper>

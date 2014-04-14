@@ -12,6 +12,10 @@ public class BaseDaoImpl<T> extends
 		SqlSessionDaoSupport implements BaseDao<T> {
 	private Class<T> clazz;
 
+	public Class<T> getClazz() {
+		return clazz;
+	}
+
 	@SuppressWarnings("unchecked")
 	public BaseDaoImpl() {
 		this.clazz = (Class<T>) ((ParameterizedType) getClass()

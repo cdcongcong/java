@@ -32,6 +32,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JDBC-Oracle-10.2.0.1"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Oracle-JDBC-10.2.0.1-ojdbc14"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
