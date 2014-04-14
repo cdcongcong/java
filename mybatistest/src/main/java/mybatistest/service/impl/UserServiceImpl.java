@@ -1,12 +1,14 @@
 package mybatistest.service.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import mybatistest.dao.UserDao;
 import mybatistest.entity.User;
 import mybatistest.service.UserService;
 
 @Service
+@Transactional
 public class UserServiceImpl extends BaseServiceImpl<User, UserDao> implements
 		UserService {
 

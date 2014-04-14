@@ -1,16 +1,19 @@
 package mybatistest;
 
+import static org.junit.Assert.*;
+import mybatistest.entity.User;
+import mybatistest.service.UserService;
+import mybatistest.utils.DaoHelper;
+
+import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import mybatistest.entity.User;
-import mybatistest.service.UserService;
-import mybatistest.service.impl.UserServiceImpl;
-import mybatistest.utils.DaoHelper;
+public class Test2 {
 
-public class Test {
+	@Test
+	public void test() {
 
-	public static void main(String[] args) {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
 				"applicationContext.xml");
 		//打印自动注册的类
@@ -32,5 +35,9 @@ public class Test {
 		newUser.setUserName("李四");
 		newUser.setRemark("");
 		userService.insertUser(newUser);
+		fail("Error");
+	
+	
 	}
+
 }
