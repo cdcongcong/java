@@ -1,5 +1,5 @@
 package mybatistest.controller;
 
-public interface BaseController {
+public class BaseController {
 
 }

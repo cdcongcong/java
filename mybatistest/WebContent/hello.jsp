@@ -8,7 +8,6 @@
 <title>hello</title>
 </head>
 <body>
- ${message}  <br/>
- <!--<c:out value="${message}"/>--> 
+ ${message} 
 </body>
 </html>

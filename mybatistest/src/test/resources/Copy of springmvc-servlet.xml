@@ -51,7 +51,8 @@
            <mvc:mapping path="/*" /><!-- 如果不配置或/*,将拦截所有的Controller -->  
            <bean class="mybatistest.controller.CommonInterceptor"></bean>  
         </mvc:interceptor>  
-    </mvc:interceptors>  
+    </mvc:interceptors> 
+     
     <!-- 处理在类级别上的@RequestMapping注解-->   
     <bean   
         class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" >   
