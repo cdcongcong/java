@@ -37,9 +37,9 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 	</bean>
 
 	<!-- 使用注解支持Bean注册 -->
-	<context:component-scan base-package="mybatistest" />
+	<!-- <context:component-scan base-package="mybatistest" />  -->
 	<!-- 使用注解支持事务 -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
 
 	<!-- 配置事务通知 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">

@@ -10,27 +10,16 @@
 
 	<!-- 启用spring mvc 注解 -->
 	<context:annotation-config />
-
-	<mvc:annotation-driven />
-	<!-- 作用：会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 
-		两个bean,是spring MVC为@Controllers分发请求所必须的。 并提供了：数据绑定支持，@NumberFormatannotation支持，@DateTimeFormat支持，@Valid支持， 
-		读写XML的支持（JAXB），读写JSON的支持（Jackson）。 -->
-
-
+	
 	<!-- 设置使用注解的类所在的jar包 -->
 	<context:component-scan base-package="mybatistest"></context:component-scan>
 	<!-- 作用：是对包进行扫描，实现注释驱动Bean定义，同时将bean自动注入容器中使用。 解决了bean的注入和使用 -->
-
-	<!-- Spring3.1前的方式 完成请求和注解POJO的映射 -->
-	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" 
-		/> -->
-
-	<!--Spring3.1开始的注解 HandlerMapping -->
-	<bean
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
-	<!--Spring3.1开始的注解 HandlerAdapter -->
-	<bean
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
+	
+	<mvc:annotation-driven />
+	<!-- 作用：会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 
+	    说明：新版本（3.1）应该是另外两个RequestMappingHandlerMapping和RequestMappingHandlerAdapter
+		两个bean,是spring MVC为@Controllers分发请求所必须的。 并提供了：数据绑定支持，@NumberFormatannotation支持，@DateTimeFormat支持，@Valid支持， 
+		读写XML的支持（JAXB），读写JSON的支持（Jackson）。 -->
 
 	<!-- JSON -->
 	<bean
@@ -91,4 +80,27 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 
+	<!-- 总错误处理 -->
+	<bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		
+		<property name="exceptionMappings">   
+            <props>   
+                <prop key="java.lang.Exception">errors/error</prop>   
+                <prop key="java.lang.Throwable">errors/err</prop>   
+            </props> 
+        </property>  
+
+		        <!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->   
+        <property name="warnLogCategory" value="WARN"></property>  
+		
+		<property name="defaultErrorView">
+			<value>/error/error</value>
+		</property>
+		<property name="defaultStatusCode">
+			<value>500</value>
+		</property>
+	</bean>
+		
+	
 </beans>
