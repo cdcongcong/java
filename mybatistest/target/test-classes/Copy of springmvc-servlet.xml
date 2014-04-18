@@ -30,16 +30,6 @@
 			value="org.springframework.web.servlet.view.JstlView" />
 	</bean>
 	
-    <!-- 处理JSON数据转换的 -->   
-    <bean id="mappingJacksonHttpMessageConverter"    
-        class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">    
-     <!-- 为了处理返回的JSON数据的编码，默认是ISO-88859-1的，这里把它设置为UTF-8,解决有乱码的情况 -->    
-        <property name="supportedMediaTypes">     
-            <list>     
-                  <value>text/html;charset=UTF-8</value>     
-            </list>     
-        </property>     
-    </bean>     
 	
 	
 	<!-- 拦截器 -->
@@ -81,6 +71,7 @@
 		WebSphere 自带的 默认Servlet的名字 "SimpleFileServlet" <servlet-mapping> <servlet-name>default</servlet-name> 
 		<url-pattern>*.jpg</url-pattern> </servlet-mapping> -->
 	<!-- 对静态资源文件的访问 方案二 -->
+	<!-- <mvc:default-servlet-handler default-servlet-name="myCustomDefaultServlet"/> -->
 	<mvc:default-servlet-handler />
 
 
@@ -116,5 +107,96 @@
 		</property>
 	</bean>
 
+
+
+	<!-- JSON -->
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="contentNegotiationManager">
+			<bean
+				class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+
+				<!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
+				<property name="favorPathExtension" value="true" />
+				<!-- 用于开启 /userinfo/123?format=json 的支持 -->
+				<property name="favorParameter" value="true" />
+				<property name="parameterName" value="format" />
+				<!-- 是否忽略Accept Header -->
+				<property name="ignoreAcceptHeader" value="false" />
+
+
+				<property name="defaultContentType" value="text/html" />
+				<property name="mediaTypes">
+					<map>
+						<entry key="page" value="text/html" />
+						<entry key="html" value="text/html" />
+						<entry key="json" value="application/json" />
+						<entry key="xml" value="application/xml" />
+					</map>
+				</property>
+			</bean>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+				<bean
+					class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<property name="viewClass"
+						value="org.springframework.web.servlet.view.JstlView" />
+					<property name="prefix" value="/" />
+					<property name="suffix" value=".jsp" />
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+     <!-- 为了处理返回的JSON数据的编码，默认是ISO-88859-1的，这里把它设置为UTF-8,解决有乱码的情况 -->    
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	<!-- JSON -->
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="mediaTypes">
+			<map>
+				<!-- 告诉视图解析器，返回的类型为json格式  application/json -->
+				<entry key="json" value="text/html" />
+			</map>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<!-- ModelAndView里的数据变成JSON -->
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+			</list>
+		</property>
+	</bean>
+	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<!-- 为了处理返回的JSON数据的编码，默认是ISO-88859-1的，这里把它设置为UTF-8,解决有乱码的情况 -->
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+				<value>text/plain;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>	
+	
 
 </beans>
