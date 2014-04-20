@@ -7,6 +7,8 @@ import mybatistest.entity.User;
 import mybatistest.service.UserService;
 import mybatistest.utils.DaoHelper;
 
+import org.apache.log4j.Logger;
+import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,18 +19,21 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller  
 @RequestMapping("/user/*")
 public class UserController extends BaseController  {
+	Logger logger = Logger.getLogger(UserController.class);
+       
 	@Autowired
 	private UserService userService;
 	
 //	@RequestMapping("login")
 	@RequestMapping(value="/login",   
-	            method=RequestMethod.GET,produces={"text/html", "application/xml", "application/json"}) 	
+	            method=RequestMethod.GET)
+	            //,produces={"text/html", "application/xml", "application/json"}) 	
 	// 子request请求url，拼接后等价于/user/login
 	public ModelAndView Login(String userName, String password) {
-		System.out.println("===============");
-		System.out.println("username:" + userName);
-		System.out.println("password:" + password);
-
+		logger.debug("=============");
+		logger.debug("username:" + userName);
+		logger.debug("password:" + password);
+		
         ModelAndView mv = new ModelAndView();   
         //添加模型数据 可以是任意的POJO对象   
 //        mv.addObject("message", userName + "! Hello World!");  
