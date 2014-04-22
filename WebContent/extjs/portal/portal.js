@@ -1,13 +1,13 @@
 /**
- * @class Ext.app.Portal
+ * @class NS.portal.Portal
  * @extends Object
  * A sample portal layout application class.
  */
 
-Ext.define('Ext.app.Portal', {
+Ext.define('NS.portal.Portal', {
 
     extend: 'Ext.container.Viewport',
-    requires: ['Ext.app.PortalPanel', 'Ext.app.PortalColumn', 'Ext.app.GridPortlet', 'Ext.app.ChartPortlet'],
+    requires: ['NS.portal.PortalPanel', 'PortalColumn', 'GridPortlet', 'ChartPortlet'],
 
     getTools: function(){
         return [{

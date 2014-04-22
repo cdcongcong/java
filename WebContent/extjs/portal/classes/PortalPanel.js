@@ -1,9 +1,9 @@
 /**
- * @class Ext.app.PortalPanel
+ * @class NS.portal.PortalPanel
  * @extends Ext.panel.Panel
  * A {@link Ext.panel.Panel Panel} class used for providing drag-drop-enabled portal layouts.
  */
-Ext.define('Ext.app.PortalPanel', {
+Ext.define('NS.portal.PortalPanel', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.portalpanel',
 

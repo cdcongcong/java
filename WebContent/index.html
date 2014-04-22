@@ -53,12 +53,19 @@
 		src="extjs/extjs/shared/options-toolbar.js"></script>
 	<!-- </x-bootstrap> -->
 
-
 	<script type="text/javascript" src="extjs/extjs/portal/portal.js"></script>
 
 	<script type="text/javascript">
+	
+	Ext.Loader.setConfig({   
+		      enabled: true,   
+		      paths: {   
+		          'NS': 'extjs'  
+		      }   
+		});  
+	
 		Ext.onReady(function() {
-			Ext.create('Ext.app.Portal');
+			Ext.create('NS.portal.Portal');
 		});
 		
 	</script>

@@ -3,7 +3,7 @@
  * @extends Ext.dd.DropTarget
  * Internal class that manages drag/drop for {@link Ext.app.PortalPanel}.
  */
-Ext.define('Ext.app.PortalDropZone', {
+Ext.define('PortalDropZone', {
     extend: 'Ext.dd.DropTarget',
 
     constructor: function(portal, cfg) {
