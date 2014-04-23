@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>portal</title>
+<meta name="description" content="ExtJS" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<!-- <base href= "application/" /> -->
+
+<link href="extjs/resources/css/ext-all-gray.css" rel="stylesheet" />
+
+ <script src="extjs/bootstrap.js"></script>
+
+<script src="extjs/locale/ext-lang-zh_CN.js"></script>
+
+<script type="text/javascript"
+	src="extjs/application/shared/options-toolbar.js"></script>
+
+<script type="text/javascript">
+	Ext.Loader.setConfig({
+		enabled : true,
+		paths : {
+			'Ext.app' : 'extjs/application/portal/classes'
+		}
+	});
+</script>
+
+ <script type="text/javascript" src="extjs/application/portal/portal.js"></script> 
+
+<script type="text/javascript">
+	Ext.require([ 'Ext.layout.container.*', 'Ext.resizer.Splitter',
+			'Ext.fx.target.Element', 'Ext.fx.target.Component',
+			'Ext.window.Window', 'Ext.app.Portlet', 'Ext.app.PortalColumn',
+			'Ext.app.PortalPanel', 'Ext.app.PortalDropZone',
+			'Ext.app.GridPortlet', 'Ext.app.ChartPortlet' ]);
+
+
+	Ext.Loader.setConfig({
+		enabled : true,
+		paths : {
+			'Ext.app' : 'extjs/application/portal'
+		}
+	});
+	
+	Ext.onReady(function() {
+		//Ext.MessageBox.alert("ExtJS", "Hello ExtJS");
+		Ext.create('Ext.app.Portal');
+		//win.show();
+		Ext.MessageBox.alert("ExtJS", "Hello ExtJS");
+	});
+
+</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

@@ -2,83 +2,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>index</title>
 <meta name="description" content="ExtJS" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<link href="extjs/extjs/resources/css/ext-all-neptune.css"
-	rel="stylesheet" />
-<link rel="stylesheet" type="text/css"
-	href="extjs/extjs/resources/css/ext-all.css" />
+<link href="extjs/resources/css/ext-all-neptune.css" rel="stylesheet" />
 
-<!-- 
-<script src="extjs/extjs/bootstrap.js"></script>
-<script src="extjs/extjs/locale/ext-lang-zh_CN.js"></script>
- -->
+<script src="extjs/bootstrap.js"></script>
+<script src="extjs/locale/ext-lang-zh_CN.js"></script>
+
+
 
 </head>
 <body>
-
-	<div id="loading">
-		<div class="loading-indicator">
-			系统 <br /> <span id="loading-msg">载入中...</span>
-		</div>
-	</div>
-
-
-	<div id="code-load" style="display: none;">
-		<script type="text/javascript">
-			document.getElementById('loading-msg').innerHTML = '加载核心库...';
-		</script>
-		<script src="extjs/extjs/bootstrap.js"></script>
-		<script type="text/javascript">
-			document.getElementById('loading-msg').innerHTML = '加载界面...';
-		</script>
-
-		<script src="extjs/extjs/locale/ext-lang-zh_CN.js"></script>
-
-		<script type="text/javascript">
-			document.getElementById('loading-msg').innerHTML = '初始化...';
-		</script>
-		<script type="text/javascript">
-			document.getElementById('loading').innerHTML = '';
-		</script>
-
-	</div>
-
-
-	<!-- <x-bootstrap> -->
-	<script type="text/javascript" src="extjs/extjs/shared/include-ext.js"></script>
-	<script type="text/javascript"
-		src="extjs/extjs/shared/options-toolbar.js"></script>
-	<!-- </x-bootstrap> -->
-
-	<script type="text/javascript" src="extjs/extjs/portal/portal.js"></script>
-
 	<script type="text/javascript">
-	
-	Ext.Loader.setConfig({   
-		      enabled: true,   
-		      paths: {   
-		          'NS': 'extjs'  
-		      }   
-		});  
-	
-		Ext.onReady(function() {
-			Ext.create('NS.portal.Portal');
+		Ext.Loader.setConfig({
+			enabled : true,
+			paths : {
+				'NS' : 'extjs'
+			}
 		});
-		
-	</script>
-	
-	
-	<!-- 
-	<script type="text/javascript">
-		function init() {
+		Ext.onReady(function() {
 			Ext.MessageBox.alert("ExtJS", "Hello ExtJS");
-		}
-		Ext.onReady(init);
+		});
 	</script>
--->
 
 </body>
 </html>
