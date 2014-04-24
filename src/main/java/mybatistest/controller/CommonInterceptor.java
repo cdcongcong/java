@@ -15,6 +15,7 @@ public class CommonInterceptor implements HandlerInterceptor {
 			HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
 		logger.debug("==========afterCompletion==========");
+		
 	}
 
 	@Override

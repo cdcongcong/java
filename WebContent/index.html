@@ -22,6 +22,18 @@
 
 
 
+    <script type="text/javascript" src="extjs/application/index/view/index.js"></script>
+
+    <script type="text/javascript">
+        enabled: true,   
+        Ext.Loader.setPath('Application.index', 'extjs/application/index/view');
+    </script>
+
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.create('Application.index.Index');
+        });
+    </script>
 
 
 
