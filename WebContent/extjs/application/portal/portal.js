@@ -24,8 +24,7 @@ Ext.define('Ext.app.Portal', {
     },
 
     initComponent: function(){
-        //var content = '<div class="portlet-content">'+Ext.example.shortBogusMarkup+'</div>';
-        var content = '<div class="portlet-content">portal</div>';
+        var content = '<div class="portlet-content">'+Ext.example.shortBogusMarkup+'</div>';
 
         Ext.apply(this, {
             id: 'app-viewport',

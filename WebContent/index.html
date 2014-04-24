@@ -6,26 +6,61 @@
 <meta name="description" content="ExtJS" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<link href="extjs/resources/css/ext-all-neptune.css" rel="stylesheet" />
+ <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css" /> 
 
+<!-- extjs核心库 -->
 <script src="extjs/bootstrap.js"></script>
+
+<!-- 主题支持 -->
+<!-- 
+<script type="text/javascript" src="extjs/application/shared/include-ext.js"></script>
+<script src="extjs/application/shared/options-toolbar.js"></script>
+-->
+
+<!-- extjs多语言 -->
 <script src="extjs/locale/ext-lang-zh_CN.js"></script>
 
 
 
+
+
+
+
+<!-- 登录成功转到该用户的portal -->
+<!-- 
+    <script type="text/javascript" src="extjs/application/shared/examples.js"></script>
+
+    <script type="text/javascript">
+        Ext.Loader.setPath('Ext.app', 'extjs/application/portal/classes');
+    </script>
+   
+    <script type="text/javascript" src="extjs/application/portal/portal.js"></script>
+    <script type="text/javascript">
+        Ext.require([
+            'Ext.layout.container.*',
+            'Ext.resizer.Splitter',
+            'Ext.fx.target.Element',
+            'Ext.fx.target.Component',
+            'Ext.window.Window',
+            'Ext.app.Portlet',
+            'Ext.app.PortalColumn',
+            'Ext.app.PortalPanel',
+            'Ext.app.Portlet',
+            'Ext.app.PortalDropZone',
+            'Ext.app.GridPortlet',
+            'Ext.app.ChartPortlet'
+        ]);
+
+        Ext.onReady(function(){
+            Ext.create('Ext.app.Portal');
+        });
+    </script>
+
+-->
+
+
 </head>
 <body>
-	<script type="text/javascript">
-		Ext.Loader.setConfig({
-			enabled : true,
-			paths : {
-				'NS' : 'extjs'
-			}
-		});
-		Ext.onReady(function() {
-			Ext.MessageBox.alert("ExtJS", "Hello ExtJS");
-		});
-	</script>
 
 </body>
 </html>
