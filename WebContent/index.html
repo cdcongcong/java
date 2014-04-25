@@ -6,12 +6,15 @@
 <meta name="description" content="ExtJS" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
- <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css" /> 
+<!-- 主题 -->
+<!--  <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css" />--> 
+ <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all-neptune.css" />  
 
 <!-- extjs核心库 -->
-<script src="extjs/bootstrap.js"></script>
+<!-- <script src="extjs/bootstrap.js"></script> -->
+<script src="extjs/ext-all.js"></script>
 
-<!-- 主题支持 -->
+<!-- 更换主题支持 -->
 <!-- 
 <script type="text/javascript" src="extjs/application/shared/include-ext.js"></script>
 <script src="extjs/application/shared/options-toolbar.js"></script>
@@ -19,19 +22,46 @@
 
 <!-- extjs多语言 -->
 <script src="extjs/locale/ext-lang-zh_CN.js"></script>
+<script src="extjs/application/locale/application-lang-zh_CN.js"></script>
 
 
 
-    <script type="text/javascript" src="extjs/application/index/view/index.js"></script>
+<link rel="stylesheet" type="text/css" href="extjs/application/shared/example.css" />
+    <link rel="stylesheet" type="text/css" href="extjs/application/index/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="extjs/application/index/TabScrollerMenu.css" />
+
+
+
+
+
 
     <script type="text/javascript">
         enabled: true,   
-        Ext.Loader.setPath('Application.index', 'extjs/application/index/view');
+        Ext.Loader.setPath('Application', 'extjs/application');
     </script>
+    
+ <link rel="stylesheet" type="text/css" href="extjs/application/index/index.css" /> 
+    <script type="text/javascript" src="extjs/application/index/view/Index.js"></script>
 
     <script type="text/javascript">
+    
+    Ext.Loader.setConfig({enabled: true});
+
+    Ext.Loader.setPath('Application', 'extjs/application');
+    
+    Ext.require([
+                 'Ext.tip.QuickTipManager',
+                 'Ext.window.Window',
+                 'Ext.tab.Panel',
+                 'Application.index.TabScrollerMenu'
+             ]);
+//    Ext.require([
+//                 'Ext.tab.*',
+//                 'Application.index.TabCloseMenu'
+//             ]);
+    
         Ext.onReady(function(){
-            Ext.create('Application.index.Index');
+        var index = Ext.create('Application.index.view.Index');
         });
     </script>
 

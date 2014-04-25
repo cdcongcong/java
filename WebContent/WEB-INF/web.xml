@@ -20,7 +20,7 @@
 
 	<!-- Spring配置 -->
 	<!-- 作用：在启动Web容器时，自动装配Spring applicationContext.xml的配置信息 默认配置在WEB-INF目录下 -->
-	<listener>
+ 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
