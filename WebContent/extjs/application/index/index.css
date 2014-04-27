@@ -6,3 +6,7 @@
 	font-weight: 200;
 	padding: 8px 15px;
 }
+
+.icon-activity{  
+  background-image: url(extjs/application/shared/icons/book.png)!important;  
+}  

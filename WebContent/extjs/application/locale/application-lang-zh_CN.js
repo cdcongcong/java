@@ -6,7 +6,7 @@
 var lang = {};  
 lang.string = {};  
 lang.string.index = {};
-lang.string.index.title = '我的表单';  
+lang.string.index.title = 'ExtJS应用系统';  
 lang.string.index.lable = '本地化';  
 
 lang.string.index.functree = {};

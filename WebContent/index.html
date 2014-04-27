@@ -1,69 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 <title>index</title>
-<meta name="description" content="ExtJS" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<!-- ExtJS核心库及更换主题 -->
+<script type="text/javascript"
+	src="extjs/application/shared/include-ext.js"></script>
+<script type="text/javascript"
+	src="extjs/application/shared/options-toolbar.js"></script>
 
-<!-- 主题 -->
-<!--  <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css" />--> 
- <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all-neptune.css" />  
-
-<!-- extjs核心库 -->
-<!-- <script src="extjs/bootstrap.js"></script> -->
-<script src="extjs/ext-all.js"></script>
-
-<!-- 更换主题支持 -->
-<!-- 
-<script type="text/javascript" src="extjs/application/shared/include-ext.js"></script>
-<script src="extjs/application/shared/options-toolbar.js"></script>
--->
 
 <!-- extjs多语言 -->
 <script src="extjs/locale/ext-lang-zh_CN.js"></script>
 <script src="extjs/application/locale/application-lang-zh_CN.js"></script>
 
 
+<!-- index页面样式表 -->
+<link rel="stylesheet" type="text/css"
+	href="extjs/application/index/index.css" />
 
-<link rel="stylesheet" type="text/css" href="extjs/application/shared/example.css" />
-    <link rel="stylesheet" type="text/css" href="extjs/application/index/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="extjs/application/index/TabScrollerMenu.css" />
+<!-- index主页面View -->
+<script type="text/javascript"
+	src="extjs/application/index/view/Index.js"></script>
 
+<script type="text/javascript">
 
+Ext.Loader.setConfig({
+    enabled: true
+});
 
-
-
-
-    <script type="text/javascript">
-        enabled: true,   
-        Ext.Loader.setPath('Application', 'extjs/application');
-    </script>
+Ext.onReady(function() {
+//	Ext.Loader.setPath('Application', 'extjs/application');
+//	var loginForm = Ext.create('Application.index.view.LoginForm');
+	
+	
+//   return;	
+//});
+   
+var fp = Ext.create('Ext.FormPanel', {
+    title: 'StatusBar with Integrated Form Validation',
+    renderTo: Ext.getBody(),
+    width: 350,
+    autoHeight: true,
+    id: 'status-form',
+    renderTo: Ext.getBody(),
+    labelWidth: 75,
+    bodyPadding: 10,
+    style:{
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        marginTop: '200px',
+        marginButton: 'auto'
+} ,
+    defaults: {
+        anchor: '95%',
+        allowBlank: false,
+        selectOnFocus: true,
+        msgTarget: 'side'
+    },
     
- <link rel="stylesheet" type="text/css" href="extjs/application/index/index.css" /> 
-    <script type="text/javascript" src="extjs/application/index/view/Index.js"></script>
+    items:[{
+        xtype: 'textfield',
+        fieldLabel: 'Name',
+        blankText: 'Name is required'
+    },{
+        xtype: 'datefield',
+        fieldLabel: 'Birthdate',
+        blankText: 'Birthdate is required'
+    }],
+    
+    dockedItems: [{
+        xtype: 'toolbar',
+        dock: 'bottom',
+        ui: 'footer',
+        items: ['->', {
+            text: 'Save',
+            handler: function(){
+                if(fp.getForm().isValid()){
+                    fp.getEl().mask();
+                    Ext.Loader.setPath('Application', 'extjs/application');
+                    var index = Ext.create('Application.index.view.Index');
+					/*
+                    fp.getForm().submit({
+                        url: 'fake.php',
+                        success: function(){
+                            fp.getEl().unmask();
+                        }
+                    });
+                    */
+                    
+                }
+            }
+        }]
+   }]    
+    
+})
+})
+;
 
-    <script type="text/javascript">
-    
-    Ext.Loader.setConfig({enabled: true});
 
-    Ext.Loader.setPath('Application', 'extjs/application');
-    
-    Ext.require([
-                 'Ext.tip.QuickTipManager',
-                 'Ext.window.Window',
-                 'Ext.tab.Panel',
-                 'Application.index.TabScrollerMenu'
-             ]);
-//    Ext.require([
-//                 'Ext.tab.*',
-//                 'Application.index.TabCloseMenu'
-//             ]);
-    
-        Ext.onReady(function(){
-        var index = Ext.create('Application.index.view.Index');
-        });
-    </script>
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+//	Ext.Loader.setPath('Application', 'extjs/application');
+
+//	Ext.onReady(function() {
+//		var index = Ext.create('Application.index.view.Index');
+//	});
+
+
+</script>
 
 
 

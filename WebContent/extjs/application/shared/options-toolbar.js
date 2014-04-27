@@ -101,11 +101,11 @@
                     rtl: false,
                     width: 170,
                     labelWidth: 45,
-                    fieldLabel: 'Theme',
+                    fieldLabel: '主题',
                     displayField: 'name',
                     valueField: 'value',
                     labelStyle: 'cursor:move;',
-                    margin: '0 5 0 0',
+                    //margin: '0 5 0 0',
                     store: Ext.create('Ext.data.Store', {
                         fields: ['value', 'name'],
                         data : [
