@@ -48,8 +48,8 @@ public class UserController extends BaseController  {
         user.setUserName("李四");
         user.setRemark("备注");
         mv.addObject(user);
-        Map<String, User> mp = new HashMap<>();
-        mp.put("message", user);
+        Map<String, Boolean> mp = new HashMap<>();
+        mp.put("success", true);
         mv.addAllObjects(mp);
         mv.setViewName("hello");
         return mv;           

@@ -1,16 +1,19 @@
 Ext.define('Application.index.view.LoginForm', {
 	extend : 'Ext.FormPanel',
 
+	requires : [ 'Ext.JSON' ],
+
 	initComponent : function() {
 		Ext.apply(this, {
-			title : 'StatusBar with Integrated Form Validation',
+			title : lang.string.index.login.title,
 			renderTo : Ext.getBody(),
 			width : 350,
 			autoHeight : true,
-			id : 'status-form',
+			id : 'login-form',
 			renderTo : Ext.getBody(),
 			labelWidth : 75,
 			bodyPadding : 10,
+			
 			style : {
 				marginRight : 'auto',
 				marginLeft : 'auto',
@@ -24,42 +27,80 @@ Ext.define('Application.index.view.LoginForm', {
 				msgTarget : 'side'
 			},
 
-			items : [{
+			items : [
+					// 用户
+					{
 						xtype : 'textfield',
-						fieldLabel : 'Name',
-						blankText : 'Name is required'
-					}, {
-						xtype : 'datefield',
-						fieldLabel : 'Birthdate',
-						blankText : 'Birthdate is required'
-					}],
+						name: 'userName',
+						fieldLabel : lang.string.index.login.username,
+						blankText : Ext.util.Format.format(
+								lang.string.required,
+								lang.string.index.login.username)
+					},
+					// 密码
+					{
+						xtype : 'textfield',
+						inputType: 'password',
+						name : 'password',
+						fieldLabel : lang.string.index.login.password,
+						blankText : Ext.util.Format.format(
+								lang.string.required,
+								lang.string.index.login.password)
+					} ],
 
-			dockedItems : [{
+			// toolbar
+			dockedItems : [ {
 				xtype : 'toolbar',
 				dock : 'bottom',
 				ui : 'footer',
-				items : ['->', {
-							text : 'Save',
-							handler : function() {
-								if (fp.getForm().isValid()) {
-									fp.getEl().mask();
-									fp.getForm().submit({
-												url : 'fake.php',
-												success : function() {
-													sb.setStatus({
-																text : 'Form saved!',
-																iconCls : '',
-																clear : true
-															});
-													fp.getEl().unmask();
-												}
-											});
-								}
-							}
-						}]
-			}]
+				// 登录
+				items : [ '->', {
+					text : lang.string.index.login.submit,
+					type : 'submit',
+					handler : this.loginAction
+				} ]
+			} ]
 
-		})
+		});
+		this.callParent(arguments);
+	},
+
+	//登录按钮处理函数
+	loginAction : function() {
+        Ext.MessageBox.alert("提示",
+        "Application.index.view.LoginForm.loginAction");
+/*
+		var form = this.up('form');
+
+		if (form.getForm().isValid()) {
+//			form.mask();
+			form.getForm().submit(
+					{
+						url : 'user/login.json',
+						method : "GET",
+						params : {}, // 传递的参数
+						success : function(form, action) {
+							var responseArray = Ext.JSON
+									.decode(action.response.responseText);
+							Ext.MessageBox.alert("success",
+									responseArray.user.userName);
+							form.reset();
+//							this.hide();
+
+							Ext.create('Application.index.view.Index');
+//							form.unmask();
+						},
+						failure : function(form, action) {
+							var responseArray = Ext.JSON
+									.decode(action.response.responseText);
+							Ext.MessageBox.alert("failure",
+									responseArray.user.userName);
+							form.reset();
+//							form.getEl().unmask();
+
+						}
+					});
+		}
+*/
 	}
-
 });

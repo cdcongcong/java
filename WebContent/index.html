@@ -30,82 +30,65 @@ Ext.Loader.setConfig({
 });
 
 Ext.onReady(function() {
-//	Ext.Loader.setPath('Application', 'extjs/application');
-//	var loginForm = Ext.create('Application.index.view.LoginForm');
+	Ext.Loader.setPath('Application', 'extjs/application');
+	var loginForm = Ext.create('Application.index.view.LoginForm');
 	
-	
-//   return;	
-//});
-   
-var fp = Ext.create('Ext.FormPanel', {
-    title: 'StatusBar with Integrated Form Validation',
-    renderTo: Ext.getBody(),
-    width: 350,
-    autoHeight: true,
-    id: 'status-form',
-    renderTo: Ext.getBody(),
-    labelWidth: 75,
-    bodyPadding: 10,
-    style:{
-        marginRight: 'auto',
-        marginLeft: 'auto',
-        marginTop: '200px',
-        marginButton: 'auto'
-} ,
-    defaults: {
-        anchor: '95%',
-        allowBlank: false,
-        selectOnFocus: true,
-        msgTarget: 'side'
-    },
+
+    function loginAction2() {
+        Ext.MessageBox.alert("提示",
+        "内容");
+    };
     
-    items:[{
-        xtype: 'textfield',
-        fieldLabel: 'Name',
-        blankText: 'Name is required'
-    },{
-        xtype: 'datefield',
-        fieldLabel: 'Birthdate',
-        blankText: 'Birthdate is required'
-    }],
-    
-    dockedItems: [{
-        xtype: 'toolbar',
-        dock: 'bottom',
-        ui: 'footer',
-        items: ['->', {
-            text: 'Save',
-            handler: function(){
-                if(fp.getForm().isValid()){
-                    fp.getEl().mask();
-                    Ext.Loader.setPath('Application', 'extjs/application');
-                    var index = Ext.create('Application.index.view.Index');
-					/*
-                    fp.getForm().submit({
-                        url: 'fake.php',
-                        success: function(){
-                            fp.getEl().unmask();
-                        }
-                    });
-                    */
-                    
-                }
+    //loginForm.loginAction() = loginAction2();
+  
+    Ext.apply(loginForm, {
+    	loginAction: function(){
+    		
+    		Ext.MessageBox.alert("提示",
+                    "内容");
+
+            var form = this.up('form');
+
+            if (form.getForm().isValid()) {
+//              form.mask();
+                form.getForm().submit(
+                        {
+                            url : 'user/login.json',
+                            method : "GET",
+                            params : {}, // 传递的参数
+                            success : function(form, action) {
+                                var responseArray = Ext.JSON
+                                        .decode(action.response.responseText);
+                                Ext.MessageBox.alert("success",
+                                        responseArray.user.userName);
+                                form.reset();
+//                              this.hide();
+
+                                Ext.create('Application.index.view.Index');
+//                              form.unmask();
+                            },
+                            failure : function(form, action) {
+                                var responseArray = Ext.JSON
+                                        .decode(action.response.responseText);
+                                Ext.MessageBox.alert("failure",
+                                        responseArray.user.userName);
+                                form.reset();
+//                              form.getEl().unmask();
+
+                            }
+                        });
             }
-        }]
-   }]    
+
+            		
+    	}
+    });
     
-})
-})
-;
+    //loginForm.hide();
+	
+   return;	
+});
+   
 
-
-
-
-
- 
- 
- 
- 
  
  
 
