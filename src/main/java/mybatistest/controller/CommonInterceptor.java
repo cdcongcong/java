@@ -1,5 +1,6 @@
 package mybatistest.controller;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,7 +16,7 @@ public class CommonInterceptor implements HandlerInterceptor {
 			HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
 		logger.debug("==========afterCompletion==========");
-		
+
 	}
 
 	@Override
@@ -29,7 +30,6 @@ public class CommonInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1,
 			Object arg2) throws Exception {
 		logger.debug("==========preHandle==========");
-		return true;
+    	return true;
 	}
-
 }

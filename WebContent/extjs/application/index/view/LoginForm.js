@@ -67,40 +67,47 @@ Ext.define('Application.index.view.LoginForm', {
 
 	//登录按钮处理函数
 	loginAction : function() {
-        Ext.MessageBox.alert("提示",
-        "Application.index.view.LoginForm.loginAction");
-/*
+//        Ext.MessageBox.alert("提示",
+//        "Application.index.view.LoginForm.loginAction");
+
 		var form = this.up('form');
 
 		if (form.getForm().isValid()) {
 //			form.mask();
 			form.getForm().submit(
 					{
-						url : 'user/login.json',
+						url : 'user/submit.json',
 						method : "GET",
 						params : {}, // 传递的参数
 						success : function(form, action) {
-							var responseArray = Ext.JSON
-									.decode(action.response.responseText);
-							Ext.MessageBox.alert("success",
-									responseArray.user.userName);
-							form.reset();
+							
+//							var responseArray = Ext.JSON
+//									.decode(action.response.responseText);
+//							Ext.MessageBox.alert("success",
+//									responseArray);
+							window.location.href="index.jsp";
+														
+//							form.reset();
 //							this.hide();
 
-							Ext.create('Application.index.view.Index');
+//							Ext.create('Application.index.view.Index');
 //							form.unmask();
 						},
 						failure : function(form, action) {
-							var responseArray = Ext.JSON
-									.decode(action.response.responseText);
-							Ext.MessageBox.alert("failure",
-									responseArray.user.userName);
-							form.reset();
+							
+//							var responseArray = Ext.JSON
+//									.decode(action.response.responseText);
+//							Ext.MessageBox.alert("failure",
+//									responseArray);
+//							
+//							window.location.href="index.jsp";
+							
+//							form.reset();
 //							form.getEl().unmask();
 
 						}
 					});
 		}
-*/
+
 	}
 });
