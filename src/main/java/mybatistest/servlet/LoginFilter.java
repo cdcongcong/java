@@ -27,7 +27,8 @@ public class LoginFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		Logger logger = Logger.getLogger(LoginFilter.class);
-		
+		chain.doFilter(request, response);
+		/*
 		// 获得在下面代码中要用的request,response,session对象
 		HttpServletRequest servletRequest = (HttpServletRequest) request;
 		HttpServletResponse servletResponse = (HttpServletResponse) response;
@@ -44,7 +45,7 @@ public class LoginFilter implements Filter {
 
 		// 从session里取员工工号信息
 		String user = (String) session.getAttribute(SEESION_MEMBER);
-
+*/
 		/*
 		 * 创建类Constants.java，里面写的是无需过滤的页面 for (int i = 0; i <
 		 * Constants.NoFilter_Pages.length; i++) {
@@ -52,7 +53,7 @@ public class LoginFilter implements Filter {
 		 * if (path.indexOf(Constants.NoFilter_Pages[i]) > -1) {
 		 * chain.doFilter(servletRequest, servletResponse); return; } }
 		 */
-
+/*
 		// 登陆页面无需过滤
 		if (path.indexOf("/login.jsp") > -1) {
 			chain.doFilter(request, response);
@@ -79,7 +80,7 @@ public class LoginFilter implements Filter {
 			// 已经登陆,继续此次请求
 			chain.doFilter(request, response);
 		}
-
+*/
 	}
 
 	public void destroy() {

@@ -26,6 +26,9 @@ import org.springframework.web.servlet.view.RedirectView;
 public class UserController extends BaseController {
 	Logger logger = Logger.getLogger(UserController.class);
 
+	private final static String USER_SESSION_ID = "userSessionID";
+	private final static String USER_ID = "userID";
+	
 	@Autowired
 	private UserService userService;
 
@@ -77,7 +80,10 @@ public class UserController extends BaseController {
 			logger.debug("用户验证成功");
 
 			HttpSession session = request.getSession();
-			session.setAttribute(LoginFilter.SEESION_MEMBER, userName);
+			logger.debug("USER_SESSION_ID:" + session.getAttribute(USER_SESSION_ID));
+			
+			session.setAttribute(USER_SESSION_ID, DaoHelper.getUUID());
+			session.setAttribute(USER_ID, userName);
 //			ModelAndView mv = new ModelAndView(new RedirectView("index"));
 			
 			ModelAndView mv = new ModelAndView();

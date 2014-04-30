@@ -13,7 +13,7 @@ Ext.define('Application.index.view.LoginForm', {
 			renderTo : Ext.getBody(),
 			labelWidth : 75,
 			bodyPadding : 10,
-			
+			baseCls : 'header', 
 			style : {
 				marginRight : 'auto',
 				marginLeft : 'auto',
@@ -85,12 +85,12 @@ Ext.define('Application.index.view.LoginForm', {
 //									.decode(action.response.responseText);
 //							Ext.MessageBox.alert("success",
 //									responseArray);
-							window.location.href="index.jsp";
+//							window.location.href="index.jsp";
 														
 //							form.reset();
 //							this.hide();
 
-//							Ext.create('Application.index.view.Index');
+							Ext.create('Application.index.view.Index');
 //							form.unmask();
 						},
 						failure : function(form, action) {

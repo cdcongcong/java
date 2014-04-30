@@ -9,18 +9,43 @@ Ext.define('Application.index.view.Index', {
 			id : 'index-viewport',
 			layout : {
 				type : 'border',
-				padding : '0 1 1 1' // pad the layout from the window
+				padding : '0 0 0 0' // pad the layout from the window
 				// edges
 			},
 			items : [
 					// title
 					{
 				id : 'index-header',
-				xtype : 'box',
+				xtype : 'container',
 				region : 'north',
 				height : 80,
-				html : lang.string.index.title,
-				border : false
+				//html : lang.string.index.title,
+				layout : {
+					type : 'hbox',
+					pack : 'end',
+					align: 'bottom',
+					padding : '0 0 0 0' // pad the layout from the window
+					// edges
+				},
+				items : [
+					{
+						xtype : 'splitbutton',
+						text :'admin',
+//						x:100,
+//						y:50,
+//						anchor:   '-10 -5',    
+//						margins : '100 5 15 20',
+						height : 25,
+						width : 120,
+						iconCls : 'nav',
+						menu: {items : [
+						         {text : '我的帐户'},
+						         {text:'退出',
+						        	 handler:this.onExit}
+						         ]}
+					
+				},
+				]
 			},
 					// end title
 					// 下部整体区域
@@ -83,8 +108,7 @@ Ext.define('Application.index.view.Index', {
 									},
 
 
-									plugins : Ext
-											.create('Application.index.TabCloseMenu'),
+									plugins : Ext.create('Application.index.TabCloseMenu'),
 
 									items : [
 											// portal
@@ -127,7 +151,10 @@ Ext.define('Application.index.view.Index', {
 		});
 
 		this.callParent(arguments);
-	}
-	,
+	},
+	//退出
+	onExit: function(){
+		Ext.MessageBox.alert("提示","退出系统");
+	}	
 
 });
