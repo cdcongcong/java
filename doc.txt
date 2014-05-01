@@ -2,10 +2,13 @@
 http://jinnianshilongnian.iteye.com/blog/1683388
 http://www.oschina.net/question/84460_9608
 http://www.tuicool.com/articles/YR7jAb
+http://blog.csdn.net/marila4720/article/details/8468327
+
 国际化
 http://kennylee26.iteye.com/blog/1473505
+http://blog.csdn.net/peng_hao1988/article/details/6705889
+http://www.blogjava.net/liudawei/articles/390582.html
 
-http://blog.csdn.net/marila4720/article/details/8468327
 
 ExtJS
 http://blog.csdn.net/sun93732/article/details/6909522
