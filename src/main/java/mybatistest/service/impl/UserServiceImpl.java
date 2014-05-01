@@ -15,7 +15,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserDao> implements
 	public String userLogin(String userNumber, String userPassword) {
 //		((UserDao) mainDao).getUserString("");
 //		子类可以不用强制转换了
-//		getMainDao().getUserString("1");
+
 		User user = getMainDao().getByID("1");
 		if (null == user) {
 			return "用户不存在！";
