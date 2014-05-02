@@ -1,4 +1,4 @@
-package mybatistest.servlet;
+package mybatistest.servlet.filter;
 
 import java.io.IOException;
 

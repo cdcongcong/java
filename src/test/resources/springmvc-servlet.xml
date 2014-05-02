@@ -10,14 +10,14 @@
 
 	<!-- 启用spring mvc 注解 -->
 	<context:annotation-config />
-	
+
 	<!-- 设置使用注解的类所在的jar包 -->
 	<context:component-scan base-package="mybatistest"></context:component-scan>
 	<!-- 作用：是对包进行扫描，实现注释驱动Bean定义，同时将bean自动注入容器中使用。 解决了bean的注入和使用 -->
-	
+
 	<mvc:annotation-driven />
 	<!-- 作用：会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 
-	    说明：新版本（3.1）应该是另外两个RequestMappingHandlerMapping和RequestMappingHandlerAdapter
+		说明：新版本（3.1）应该是另外两个RequestMappingHandlerMapping和RequestMappingHandlerAdapter 
 		两个bean,是spring MVC为@Controllers分发请求所必须的。 并提供了：数据绑定支持，@NumberFormatannotation支持，@DateTimeFormat支持，@Valid支持， 
 		读写XML的支持（JAXB），读写JSON的支持（Jackson）。 -->
 
@@ -26,12 +26,12 @@
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<!-- 设置为true以忽略对Accept Header的支持 -->
 		<property name="ignoreAcceptHeader" value="true" />
-		<!-- true，开启扩展名支持，false关闭支持 ?-->
-        <property name="favorPathExtension" value="true" />
-        <!-- 用于开启 /userinfo/123?format=json的支持 ?-->
-        <property name="favorParameter" value="true" />
-        
-		
+		<!-- true，开启扩展名支持，false关闭支持 ? -->
+		<property name="favorPathExtension" value="true" />
+		<!-- 用于开启 /userinfo/123?format=json的支持 ? -->
+		<property name="favorParameter" value="true" />
+
+
 		<!-- 在没有扩展名时即: "/user/1" 时的默认展现形式 -->
 		<property name="defaultContentType" value="text/html" />
 		<property name="mediaTypes">
@@ -75,27 +75,36 @@
 	<!-- 拦截器 -->
 
 	<mvc:interceptors>
-		<!-- 多个拦截器,顺序执行 -->
+		<!-- 多个拦截器,顺序执行 interceptors下面的bean是根拦截器-->
+            <bean class="mybatistest.controller.CommonInterceptor"></bean>
+            <bean id="localeChangeInterceptor" 
+            class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="locale" />
+            </bean>
 		<mvc:interceptor>
+            <!-- 定义本地化变更拦截器 -->
 			<mvc:mapping path="/**" /><!-- 如果不配置或/**,将拦截所有的Controller -->
-			<bean class="mybatistest.controller.CommonInterceptor"></bean>
+			<bean id="localeChangeInterceptor2"
+				class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			</bean>
 		</mvc:interceptor>
+
 	</mvc:interceptors>
 
 	<!-- 总错误处理 -->
 	<bean id="exceptionResolver"
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		
-		<property name="exceptionMappings">   
-            <props>   
-                <prop key="java.lang.Exception">errors/error</prop>   
-                <prop key="java.lang.Throwable">errors/err</prop>   
-            </props> 
-        </property>  
 
-		        <!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->   
-        <property name="warnLogCategory" value="WARN"></property>  
-		
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">errors/error</prop>
+				<prop key="java.lang.Throwable">errors/err</prop>
+			</props>
+		</property>
+
+		<!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->
+		<property name="warnLogCategory" value="WARN"></property>
+
 		<property name="defaultErrorView">
 			<value>/error/error</value>
 		</property>
@@ -103,8 +112,25 @@
 			<value>500</value>
 		</property>
 	</bean>
-	
 
-		
-	
+	<!--资源文件绑定器 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:resources/i18n/messages" />
+		<property name="useCodeAsDefaultMessage" value="true" />
+	</bean>
+
+
+        <!-- class="org.springframework.web.servlet.i18n.SessionLocaleResolver"
+        <property name="defaultLocale" value="zh" />
+        > -->
+	<bean id="localeResolver"
+        class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+	</bean>
+
+
+
+
+
+
 </beans>

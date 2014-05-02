@@ -6,7 +6,7 @@
 
 	<filter>
 		<filter-name>login</filter-name>
-		<filter-class>mybatistest.servlet.LoginFilter</filter-class>
+		<filter-class>mybatistest.servlet.filter.LoginFilter</filter-class>
 	</filter>
 
 	<filter-mapping>

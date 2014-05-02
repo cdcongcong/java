@@ -76,8 +76,8 @@ Ext.define('Application.index.view.LoginForm', {
 //			form.mask();
 			form.getForm().submit(
 					{
-						url : 'user/submit.json',
-						method : "GET",
+						url : 'user/login.json',
+						method : "POST",
 						params : {}, // 传递的参数
 						success : function(form, action) {
 							
@@ -95,10 +95,10 @@ Ext.define('Application.index.view.LoginForm', {
 						},
 						failure : function(form, action) {
 							
-//							var responseArray = Ext.JSON
-//									.decode(action.response.responseText);
-//							Ext.MessageBox.alert("failure",
-//									responseArray);
+							var responseArray = Ext.JSON
+									.decode(action.response.responseText);
+							Ext.MessageBox.alert("failure",
+									responseArray.result);
 //							
 //							window.location.href="index.jsp";
 							

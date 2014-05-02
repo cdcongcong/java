@@ -57,5 +57,5 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 			id="pointcut" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
 	</aop:config>
-
+	
 </beans>
