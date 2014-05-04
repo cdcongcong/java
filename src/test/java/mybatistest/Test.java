@@ -31,6 +31,6 @@ public class Test {
 		newUser.setUserNumber("2");
 		newUser.setUserName("李四");
 		newUser.setRemark("");
-		userService.insertUser(newUser);
+//		userService.insertUser(newUser);
 	}
 }

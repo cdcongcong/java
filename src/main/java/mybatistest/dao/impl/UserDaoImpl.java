@@ -10,17 +10,6 @@ import mybatistest.entity.User;
 @Scope("prototype")   
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 
-	public String getUserString(String id) {
-		return "UserDao.getUserString";
-	}
-	
-	public String insertUser(User user) {
-		
-		String methodName = Thread.currentThread().getStackTrace()[1]
-				.getMethodName();
-		
-		getSqlSession().insert(getClazz().getName() + "." + methodName, user);
-		return user.getUserID();
-	}
+
 
 }

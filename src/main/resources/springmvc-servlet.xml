@@ -75,18 +75,14 @@
 	<!-- 拦截器 -->
 
 	<mvc:interceptors>
-		<!-- 多个拦截器,顺序执行 interceptors下面的bean是根拦截器-->
-            <bean class="mybatistest.controller.CommonInterceptor"></bean>
-            <bean id="localeChangeInterceptor" 
-            class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-            <property name="paramName" value="locale" />
-            </bean>
+		<!-- 多个拦截器,顺序执行 interceptors下面的bean是根拦截器 -->
 		<mvc:interceptor>
-            <!-- 定义本地化变更拦截器 -->
-			<mvc:mapping path="/**" /><!-- 如果不配置或/**,将拦截所有的Controller -->
-			<bean id="localeChangeInterceptor2"
-				class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-			</bean>
+		<mvc:mapping path="/**" />
+        <bean class="mybatistest.controller.CommonInterceptor"></bean>
+			<!-- 定义本地化变更拦截器 -->
+			<!-- 如果不配置或/**,将拦截所有的Controller -->
+			<!-- <mvc:mapping path="/**" /> <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"> 
+				</bean> -->
 		</mvc:interceptor>
 
 	</mvc:interceptors>
@@ -121,11 +117,10 @@
 	</bean>
 
 
-        <!-- class="org.springframework.web.servlet.i18n.SessionLocaleResolver"
-        <property name="defaultLocale" value="zh" />
-        > -->
+	<!-- class="org.springframework.web.servlet.i18n.SessionLocaleResolver" 
+		<property name="defaultLocale" value="zh" /> > -->
 	<bean id="localeResolver"
-        class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 	</bean>
 
 

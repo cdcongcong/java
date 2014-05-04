@@ -34,7 +34,7 @@ public class Test2 {
 		newUser.setUserNumber("2");
 		newUser.setUserName("李四");
 		newUser.setRemark("");
-		userService.insertUser(newUser);
+//		userService.insertUser(newUser);
 		fail("Error");
 	
 	

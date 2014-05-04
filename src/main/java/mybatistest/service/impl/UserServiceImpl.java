@@ -26,9 +26,5 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserDao> implements
 		return "登录成功！";
 	}
 
-	public String insertUser(User user) {
-		// TODO Auto-generated method stub
-		getMainDao().insertUser(user);
-		return user.getUserID();
-	}
+
 }

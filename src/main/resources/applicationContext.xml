@@ -16,9 +16,9 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
-		<property name="username" value="MyBatis" />
-		<property name="password" value="MyBatis" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.0.136:1521:server" />
+		<property name="username" value="mybatistest" />
+		<property name="password" value="mybatistest" />
 
 
 	</bean>

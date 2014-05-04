@@ -1,4 +1,9 @@
-﻿SpringMVC
+﻿MyBatis
+http://my.oschina.net/lichhao/blog/114311
+http://wendy-wxie.iteye.com/blog/1605193
+http://www.haogongju.net/art/2249114
+
+SpringMVC
 http://jinnianshilongnian.iteye.com/blog/1683388
 http://www.oschina.net/question/84460_9608
 http://www.tuicool.com/articles/YR7jAb

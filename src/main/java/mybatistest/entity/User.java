@@ -2,7 +2,7 @@ package mybatistest.entity;
 import java.io.*;
 public class User implements Serializable{
 	/**
-	 * 
+	 * 用户
 	 */
 	private static final long serialVersionUID = -255692613846381236L;
 	private String userID;

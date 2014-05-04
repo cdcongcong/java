@@ -13,6 +13,7 @@ import mybatistest.common.contant.*;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
@@ -30,15 +31,10 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 @Controller
 @RequestMapping("/user/*")
 public class UserController extends BaseController {
-	Logger logger = Logger.getLogger(UserController.class);
+	Logger logger = Logger.getLogger(getClass());
 
 	@Autowired
 	private UserService userService;
-	//国际化
-	@Autowired
-    private ReloadableResourceBundleMessageSource resourceBundleMessageSource;
-
-
 	
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -54,7 +50,7 @@ public class UserController extends BaseController {
  		Locale locale = lr.resolveLocale(request);
 		 
 		 logger.debug(locale);
-		logger.debug(resourceBundleMessageSource.getMessage("Authentication.emptyPassword", null, locale));
+		logger.debug(messageSource.getMessage("Authentication.emptyPassword", null, locale));
 		HttpSession session = request.getSession();
 		logger.debug("USER_SESSION_ID:" + session.getAttribute(HttpSessionContant.USER_SESSION_ID));
 
@@ -78,7 +74,7 @@ public class UserController extends BaseController {
 		} else {
 			logger.debug("登录失败1");
 			mv.addObject("success", false);
-			mv.addObject("result",resourceBundleMessageSource.getMessage("Authentication.emptyPassword", null, locale));
+			mv.addObject("result",messageSource.getMessage("Authentication.emptyPassword", null, locale));
 			mv.setViewName("login");
 			logger.debug("登录失败2");
 			return mv;

@@ -6,6 +6,9 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+    HttpSession s = request.getSession(); 
+    String userSessionID = (String) s.getAttribute("userSessionID");
+    String userID = (String) s.getAttribute("userID");
 %>
 
 
@@ -17,7 +20,6 @@
 <title>index</title>
 
 <base href="<%=basePath%>">
-
 
 <!-- ExtJS核心库及更换主题 -->
 <script type="text/javascript"
@@ -38,11 +40,6 @@
 <!-- index主页面View -->
 <script type="text/javascript"
 	src="extjs/application/index/view/Index.js"></script>
-<%
-    HttpSession s = request.getSession(); 
-    String userSessionID = (String) s.getAttribute("userSessionID");
-    String userID = (String) s.getAttribute("userID");
-%>
 
 <script type="text/javascript">
 	Ext.Loader.setConfig({
@@ -52,7 +49,7 @@
 	Ext.Loader.setPath('Application', 'extjs/application');
 		Ext.onReady(function() {
 		    var userSessionID = "<%=userSessionID%>";
-		    //Ext.MessageBox.alert("userSessionID",userSessionID);
+//		    Ext.MessageBox.alert("userSessionID",userSessionID);
 
 		if (("" == userSessionID)||("null" == userSessionID)) {
 			var loginForm = Ext.create('Application.index.view.LoginForm');

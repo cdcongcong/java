@@ -13,7 +13,6 @@ Ext.define('Application.index.view.LoginForm', {
 			renderTo : Ext.getBody(),
 			labelWidth : 75,
 			bodyPadding : 10,
-			baseCls : 'header', 
 			style : {
 				marginRight : 'auto',
 				marginLeft : 'auto',

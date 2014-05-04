@@ -98,13 +98,6 @@
 		<param-value>3600000</param-value>
 	</context-param>
 
-	<!-- spring框架默认定义webAppRootKey的值为webapp.root，若不配此参数默认值就是webapp.root（因此，此参数可选配） -->
-	<context-param>
-		<param-name>webAppRootKey</param-name>
-		<param-value>home</param-value>
-	</context-param>
-
-
 	<welcome-file-list>
 		<welcome-file>extjs/application/index.jsp</welcome-file>
 		<!-- <welcome-file>/extjs/application/portal/portal.html</welcome-file> -->
