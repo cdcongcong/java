@@ -8,7 +8,8 @@
   <result property="userName" column="user_name"/>
 </resultMap>
     
-    <select id="getByID" parameterType="String" resultMap="userResultMap">
+ <!--     <select id="getByID" parameterType="String" resultMap="userResultMap"> -->
+    <select id="getByID" parameterType="String" resultType="map">
         select user_id ,
                user_number,
                user_name,
