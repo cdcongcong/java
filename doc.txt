@@ -6,7 +6,9 @@ http://denger.iteye.com/blog/1126423/
 http://jsczxy2.iteye.com/blog/1295736
 http://www.oschina.net/code/snippet_176115_9639
 
-
+插件
+http://mybatis.googlecode.com/svn/sub-projects/generator/trunk/eclipse/UpdateSite/
+http://www.cnblogs.com/zcy_soft/p/3358132.html
 
 SpringMVC
 http://jinnianshilongnian.iteye.com/blog/1683388
