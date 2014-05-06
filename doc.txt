@@ -17,6 +17,8 @@ http://www.tuicool.com/articles/YR7jAb
 http://blog.csdn.net/marila4720/article/details/8468327
 http://code.google.com/p/bounding/wiki/SpringMVC3
 
+http://my.oschina.net/scipio/blog/197629
+
 国际化
 http://kennylee26.iteye.com/blog/1473505
 http://blog.csdn.net/peng_hao1988/article/details/6705889
