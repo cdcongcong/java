@@ -1,4 +1,5 @@
 package mybatistest.common.contant;
+
 /*
  * HttpSession中保存数据的名称常量
  */

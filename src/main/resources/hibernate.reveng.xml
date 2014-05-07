@@ -2,4 +2,11 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
+	<table-filter match-schema="MYBATIS" match-name=".*"></table-filter>
+	<table schema="MYBATIS" name="SYSTEM_USERS">
+		<column name="USER_ID"></column>
+		<column name="USER_NUMBER"></column>
+		<column name="USER_NAME"></column>
+		<column name="REMARK"></column>
+	</table>
 </hibernate-reverse-engineering>
