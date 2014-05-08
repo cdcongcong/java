@@ -1,9 +1,10 @@
 package mybatistest.service;
 
-import mybatistest.entity.User;
+import mybatistest.common.exception.CommonException;
+import mybatistest.entity.Scusers;
 
-public interface UserService extends BaseService<User>{
+public interface UserService extends BaseService<Scusers>{
 
-	public String userLogin(String userNumber, String userPassword);  
+	public Boolean userLogin(String userNumber, String userPassword) throws CommonException;  
 
 }

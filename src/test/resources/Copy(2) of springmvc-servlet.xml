@@ -8,21 +8,14 @@
        ">
 
 
-	<!-- 启用spring mvc 注解 首先说<context:annotation-config> 标签吧，该标签的作用是 向Spring 
-		容器注册 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor、 
-		PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcessor 
-		这 4 个BeanPostProcessor。 注册这4个BeanPostProcessor的作用，就是为了你的系统能够识别相应的注解。 -->
-	<!-- 使用context:component-scan后，可不再用这个 
-	<context:annotation-config /> -->
-
+	<!-- 启用spring mvc 注解 -->
+	<context:annotation-config />
 
 	<!-- 设置使用注解的类所在的jar包 -->
-	<!-- 注：如果base-package=cn.javass 则注解事务不起作用 -->
-	  <context:component-scan base-package="mybatistest.controller"></context:component-scan>  
+	<context:component-scan base-package="mybatistest"></context:component-scan>
 	<!-- 作用：是对包进行扫描，实现注释驱动Bean定义，同时将bean自动注入容器中使用。 解决了bean的注入和使用 -->
-	<!-- 此处只应该加载表现层组件，如果此处还加载dao层或service层的bean会将之前容器加载的替换掉，而且此处不会进行AOP织入，所以会造成AOP失效问题（如事务不起作用） -->
 
-<!-- 	<mvc:annotation-driven /> -->
+	<mvc:annotation-driven />
 	<!-- 作用：会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 
 		说明：新版本（3.1）应该是另外两个RequestMappingHandlerMapping和RequestMappingHandlerAdapter 
 		两个bean,是spring MVC为@Controllers分发请求所必须的。 并提供了：数据绑定支持，@NumberFormatannotation支持，@DateTimeFormat支持，@Valid支持， 
@@ -84,8 +77,8 @@
 	<mvc:interceptors>
 		<!-- 多个拦截器,顺序执行 interceptors下面的bean是根拦截器 -->
 		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<bean class="mybatistest.controller.CommonInterceptor"></bean>
+		<mvc:mapping path="/**" />
+        <bean class="mybatistest.controller.CommonInterceptor"></bean>
 			<!-- 定义本地化变更拦截器 -->
 			<!-- 如果不配置或/**,将拦截所有的Controller -->
 			<!-- <mvc:mapping path="/**" /> <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"> 

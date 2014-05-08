@@ -1,10 +1,7 @@
 package mybatistest.dao;
 
-import java.util.Map;
+import mybatistest.entity.Scusers;
 
-import mybatistest.entity.User;
-
-public interface UserDao extends BaseDao<User>{
+public interface UserDao extends BaseDao<Scusers>{
 	
-public Map<String, Object> getMap();
 }

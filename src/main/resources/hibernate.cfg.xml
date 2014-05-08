@@ -1,13 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
-		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory name="hibernate_test">
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
-        <property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.0.136:1521:SERVER</property>
-        <property name="hibernate.connection.password">mybatistest</property>
-        <property name="hibernate.connection.username">mybatistest</property>
+        <!-- 与spring整合后，需要去掉这部分内容
+        <property name="hibernate.connection.password">mybatis</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@127.0.0.2:1521:XE</property>
+        <property name="hibernate.connection.username">mybatis</property>
+        <property name="hibernate.default_schema">MYBATIS</property>
+-->
         <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="hibernate.show_sql">true</property>
+        
+        <mapping resource="mybatistest/entity/Scusers.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

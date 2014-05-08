@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import mybatistest.entity.User;
 import mybatistest.service.UserService;
 import mybatistest.utils.DaoHelper;
 import mybatistest.common.contant.*;
+import mybatistest.common.exception.CommonException;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,35 +50,38 @@ public class UserController extends BaseController {
  		Locale locale = lr.resolveLocale(request);
 		 
 		 logger.debug(locale);
-		logger.debug(messageSource.getMessage("Authentication.emptyPassword", null, locale));
+//		logger.debug(messageSource.getMessage("Authentication.emptyPassword", null, locale));
 		HttpSession session = request.getSession();
 		logger.debug("USER_SESSION_ID:" + session.getAttribute(HttpSessionContant.USER_SESSION_ID));
 
 		ModelAndView mv = new ModelAndView();
 
-		// 用户admin 密码admin的用户
-		if (userName.equals("admin") && password.equals("admin")) {
-			// 当登录成功时，将用户信息存放到session中去
-			logger.debug("用户验证成功");
-
-//			HttpSession session = request.getSession();
-//			logger.debug("USER_SESSION_ID:" + session.getAttribute(HttpSessionContant.USER_SESSION_ID));
-			
-			session.setAttribute(HttpSessionContant.USER_SESSION_ID, DaoHelper.getUUID());
-			session.setAttribute(HttpSessionContant.USER_ID, userName);
-
-			mv.addObject("success", true);
-			
-			mv.setViewName("index");
-			return mv;
-		} else {
-			logger.debug("登录失败1");
+		try {
+			if (userService.userLogin(userName, password)) {
+				logger.debug("用户验证成功");
+				session.setAttribute(HttpSessionContant.USER_SESSION_ID, DaoHelper.getUUID());
+				session.setAttribute(HttpSessionContant.USER_ID, userName);
+				mv.addObject("success", true);
+				mv.setViewName("index");
+			}
+		} 
+		catch(CommonException e){
+			//验证未通过
+			logger.debug("验证未通过");
 			mv.addObject("success", false);
-			mv.addObject("result",messageSource.getMessage("Authentication.emptyPassword", null, locale));
+			mv.addObject("result",messageSource.getMessage(e.getMessage(), new Object[] {userName}, locale));
 			mv.setViewName("login");
-			logger.debug("登录失败2");
-			return mv;
+			
 		}
+		catch (Exception e) {
+			// 其他异常
+			logger.debug("Login异常");
+			mv.addObject("success", false);
+			mv.addObject("result",e.getMessage());
+			mv.setViewName("login");
+			e.printStackTrace();
+		}
+		return mv;
 	}
 
 	

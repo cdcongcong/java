@@ -1,10 +1,15 @@
 package mybatistest.service.impl;
 
 import java.io.Serializable;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import mybatistest.dao.BaseDao;
 import mybatistest.service.BaseService;
 
+//事务采用配置而不是注解
 public abstract class BaseServiceImpl<T,  D extends BaseDao<T>> implements
 		BaseService<T> {
 	@Autowired
@@ -15,8 +20,4 @@ public abstract class BaseServiceImpl<T,  D extends BaseDao<T>> implements
 		return mainDao;
 	}
 
-	//实现接口BaseSerivce中的方法
-	public T getByID(Serializable id) {
-		return mainDao.getByID(id);
-	};
 }

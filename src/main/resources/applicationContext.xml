@@ -16,46 +16,72 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@192.168.0.136:1521:server" />
-		<property name="username" value="mybatistest" />
-		<property name="password" value="mybatistest" />
-
-
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
+		<property name="username" value="mybatis" />
+		<property name="password" value="mybatis" />
 	</bean>
+
+	<!-- session工厂 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="configLocation" value="classpath:hibernate.cfg.xml" />
+		<!-- 自动扫描注解方式配置的hibernate类文件 
+		<property name="packagesToScan">
+			<list>
+				<value>mybatistest</value>
+			</list>
+		</property>-->
+	</bean>
+
+	<!-- 配置事务管理器 -->
 	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:mybatis-configuration.xml" />
-	</bean>
+<!-- 配置事务管理器 
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+  -->  
+    <!-- 通过exclude-filter 把所有 @Controller注解的表现层控制器组件排除-->
+    <context:component-scan base-package="mybatistest">  
+    <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>  
+    </context:component-scan>  
+    
 
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sqlSessionFactory" />
-	</bean>
-
-	<!-- 使用注解支持Bean注册 -->
-	<!-- <context:component-scan base-package="mybatistest" />  -->
-	<!-- 使用注解支持事务 -->
-	<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
-
-	<!-- 配置事务通知 -->
+	<!-- 配置事务通知属性 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<!-- 定义事务传播属性 -->
 		<tx:attributes>
-			<!-- name表示以什么开始的方法名，比如 add*表示add开头的方法 propagation表示事务传播属性，不写默认有 -->
 			<tx:method name="insert*" propagation="REQUIRED" />
-			<tx:method name="del*" />
-			<tx:method name="update*" />
-			<tx:method name="find*" read-only="true" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="edit*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="new*" propagation="REQUIRED" />
+			<tx:method name="set*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="change*" propagation="REQUIRED" />
+			<tx:method name="get*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="find*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="load*" propagation="REQUIRED" read-only="true" />
+			<!--默认其他方法都是REQUIRED-->
+			<tx:method name="*" propagation="REQUIRED" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
 	<!-- 配置事务切面 -->
-	<aop:config>
-		<aop:pointcut expression="execution(* mybatistest.service..*.*(..))"
-			id="pointcut" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
-	</aop:config>
-	
+    <aop:config proxy-target-class="true"> 
+        <aop:pointcut id="service" expression="execution(* mybatistest.service.*.*(..))" /> 
+        <aop:advisor pointcut-ref="service" advice-ref="txAdvice" /> 
+    </aop:config> 
+    <aop:config proxy-target-class="true"> 
+        <aop:pointcut id="serviceImpl" expression="execution(* mybatistest.service.impl.*.*(..))" /> 
+        <aop:advisor pointcut-ref="serviceImpl" advice-ref="txAdvice" /> 
+    </aop:config>
+    
+ 
+     
 </beans>

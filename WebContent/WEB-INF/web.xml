@@ -4,6 +4,18 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name>mybatistest</display-name>
 
+    <!-- Spring配置 -->
+    <!-- 作用：在启动Web容器时，自动装配Spring applicationContext.xml的配置信息 默认配置在WEB-INF目录下 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- 指定Spring Bean的配置文件所在目录。 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath*:applicationContext.xml</param-value>
+    </context-param>
+
 	<filter>
 		<filter-name>login</filter-name>
 		<filter-class>mybatistest.servlet.filter.LoginFilter</filter-class>
@@ -54,18 +66,6 @@
 		<servlet-name>springmvc</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
-	<!-- Spring配置 -->
-	<!-- 作用：在启动Web容器时，自动装配Spring applicationContext.xml的配置信息 默认配置在WEB-INF目录下 -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
-	<!-- 指定Spring Bean的配置文件所在目录。 -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath*:applicationContext.xml</param-value>
-	</context-param>
 
 	<!-- 解决工程编码过滤器 -->
 	<filter>
