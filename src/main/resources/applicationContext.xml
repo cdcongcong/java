@@ -55,21 +55,11 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<!-- 定义事务传播属性 -->
 		<tx:attributes>
-			<tx:method name="insert*" propagation="REQUIRED" />
-			<tx:method name="update*" propagation="REQUIRED" />
-			<tx:method name="edit*" propagation="REQUIRED" />
-			<tx:method name="save*" propagation="REQUIRED" />
-			<tx:method name="add*" propagation="REQUIRED" />
-			<tx:method name="new*" propagation="REQUIRED" />
-			<tx:method name="set*" propagation="REQUIRED" />
-			<tx:method name="remove*" propagation="REQUIRED" />
-			<tx:method name="delete*" propagation="REQUIRED" />
-			<tx:method name="change*" propagation="REQUIRED" />
 			<tx:method name="get*" propagation="REQUIRED" read-only="true" />
 			<tx:method name="find*" propagation="REQUIRED" read-only="true" />
 			<tx:method name="load*" propagation="REQUIRED" read-only="true" />
 			<!--默认其他方法都是REQUIRED-->
-			<tx:method name="*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="*" propagation="REQUIRED"  />
 		</tx:attributes>
 	</tx:advice>
 	<!-- 配置事务切面 -->
@@ -77,10 +67,6 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
         <aop:pointcut id="service" expression="execution(* mybatistest.service.*.*(..))" /> 
         <aop:advisor pointcut-ref="service" advice-ref="txAdvice" /> 
     </aop:config> 
-    <aop:config proxy-target-class="true"> 
-        <aop:pointcut id="serviceImpl" expression="execution(* mybatistest.service.impl.*.*(..))" /> 
-        <aop:advisor pointcut-ref="serviceImpl" advice-ref="txAdvice" /> 
-    </aop:config>
     
  
      

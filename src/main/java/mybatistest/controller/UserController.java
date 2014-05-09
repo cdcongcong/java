@@ -31,7 +31,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 @Controller
 @RequestMapping("/user/*")
 public class UserController extends BaseController {
-	Logger logger = Logger.getLogger(getClass());
+	Logger log = Logger.getLogger(getClass());
 
 	@Autowired
 	private UserService userService;
@@ -39,8 +39,8 @@ public class UserController extends BaseController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView Login(String userName, String password,HttpServletRequest request) {
-		logger.debug("userName:" + userName);
-		logger.debug("password:" + password);
+		log.debug("userName:" + userName);
+		log.debug("password:" + password);
 //		 Locale locale = LocaleContextHolder.getLocale(); 
 
 //		 RequestContext requestContext = new RequestContext(request);
@@ -49,16 +49,16 @@ public class UserController extends BaseController {
  		LocaleResolver lr = RequestContextUtils.getLocaleResolver(request);
  		Locale locale = lr.resolveLocale(request);
 		 
-		 logger.debug(locale);
+		 log.debug(locale);
 //		logger.debug(messageSource.getMessage("Authentication.emptyPassword", null, locale));
 		HttpSession session = request.getSession();
-		logger.debug("USER_SESSION_ID:" + session.getAttribute(HttpSessionContant.USER_SESSION_ID));
+		log.debug("USER_SESSION_ID:" + session.getAttribute(HttpSessionContant.USER_SESSION_ID));
 
 		ModelAndView mv = new ModelAndView();
 
 		try {
 			if (userService.userLogin(userName, password)) {
-				logger.debug("用户验证成功");
+				log.debug("用户验证成功");
 				session.setAttribute(HttpSessionContant.USER_SESSION_ID, DaoHelper.getUUID());
 				session.setAttribute(HttpSessionContant.USER_ID, userName);
 				mv.addObject("success", true);
@@ -67,7 +67,7 @@ public class UserController extends BaseController {
 		} 
 		catch(CommonException e){
 			//验证未通过
-			logger.debug("验证未通过");
+			log.debug("验证未通过");
 			mv.addObject("success", false);
 			mv.addObject("result",messageSource.getMessage(e.getMessage(), new Object[] {userName}, locale));
 			mv.setViewName("login");
@@ -75,7 +75,7 @@ public class UserController extends BaseController {
 		}
 		catch (Exception e) {
 			// 其他异常
-			logger.debug("Login异常");
+			log.debug("Login异常");
 			mv.addObject("success", false);
 			mv.addObject("result",e.getMessage());
 			mv.setViewName("login");

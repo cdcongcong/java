@@ -5,7 +5,10 @@ import java.util.UUID;
 public class DaoHelper {
 	public static String getUUID(){
 		UUID uuid = UUID.randomUUID(); 
-		return uuid.toString().replace("-", "");
+		return uuid.toString().replace("-", "").toUpperCase();
 	}
+	
+	
+	
 
 }

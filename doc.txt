@@ -16,6 +16,7 @@ http://www.oschina.net/question/84460_9608
 http://www.tuicool.com/articles/YR7jAb
 http://blog.csdn.net/marila4720/article/details/8468327
 http://code.google.com/p/bounding/wiki/SpringMVC3
+http://sishuok.com/forum/blogPost/list/2625.html
 
 Spring注解
 http://blog.csdn.net/courage89/article/details/8446818

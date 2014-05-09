@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-5-9 16:26:51 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="mybatistest.entity.UserActionLog" table="USER_ACTION_LOG">
+        <id name="logId" type="string">
+            <column name="LOG_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="userId" type="string">
+            <column name="USER_ID" />
+        </property>
+        <property name="actionType" type="string">
+            <column name="ACTION_TYPE" />
+        </property>
+        <property name="actionDate" type="timestamp">
+            <column name="ACTION_DATE" length="7" />
+        </property>
+        <property name="actionRemark" type="string">
+            <column name="ACTION_REMARK" />
+        </property>
+    </class>
+</hibernate-mapping>
