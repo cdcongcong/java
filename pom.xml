@@ -47,11 +47,6 @@
 			<artifactId>hibernate-jpamodelgen</artifactId>
 			<version>4.3.5.Final</version>
 		</dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-tools</artifactId>
-            <version>4.0.0-CR1</version>
-        </dependency>
 		<!-- optional -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
