@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import mybatistest.dao.BaseDao;
 
+
 public class BaseDaoImpl<T>  implements BaseDao<T> {
 	Logger log = Logger.getLogger(getClass());
 
@@ -21,7 +22,7 @@ public class BaseDaoImpl<T>  implements BaseDao<T> {
 	private SessionFactory sessionFactory;  
 
 	public SessionFactory getSessionFactory() {
-		return sessionFactory;
+		return this.sessionFactory;
 	}
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
@@ -45,6 +46,7 @@ public class BaseDaoImpl<T>  implements BaseDao<T> {
 		this.clazz = (Class<T>) ((ParameterizedType) getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];
 
+		log.debug("BaseDaoImpl created" + this.clazz);
 	}
 
 	@SuppressWarnings("unchecked")

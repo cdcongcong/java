@@ -10,6 +10,7 @@ import mybatistest.service.UserService;
 import mybatistest.utils.DaoHelper;
 import mybatistest.common.contant.*;
 import mybatistest.common.exception.CommonException;
+import mybatistest.entity.Scusers;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class UserController extends BaseController {
 	private UserService userService;
 	
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login") //, method = RequestMethod.POST)
 	public ModelAndView Login(String userName, String password,HttpServletRequest request) {
 		log.debug("userName:" + userName);
 		log.debug("password:" + password);
@@ -56,12 +57,16 @@ public class UserController extends BaseController {
 
 		ModelAndView mv = new ModelAndView();
 
+		Scusers user;
 		try {
-			if (userService.userLogin(userName, password)) {
+			user = userService.userLogin(userName, password); 
+			if (null != user) {
 				log.debug("用户验证成功");
 				session.setAttribute(HttpSessionContant.USER_SESSION_ID, DaoHelper.getUUID());
-				session.setAttribute(HttpSessionContant.USER_ID, userName);
+				session.setAttribute(HttpSessionContant.USER_ID, user.getUserid());
 				mv.addObject("success", true);
+				user.setPassword(null);
+				mv.addObject(user);
 				mv.setViewName("index");
 			}
 		} 

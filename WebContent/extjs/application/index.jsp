@@ -50,7 +50,8 @@
 		Ext.onReady(function() {
 		    var userSessionID = "<%=userSessionID%>";
 //		    Ext.MessageBox.alert("userSessionID",userSessionID);
-
+            userSessionID = "null";
+            
 		if (("" == userSessionID)||("null" == userSessionID)) {
 			var loginForm = Ext.create('Application.index.view.LoginForm');
 		} else {

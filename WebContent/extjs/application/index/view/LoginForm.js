@@ -87,6 +87,7 @@ Ext.define('Application.index.view.LoginForm', {
 //							window.location.href="index.jsp";
 														
 //							form.reset();
+//							form.hide();
 //							this.hide();
 
 							Ext.create('Application.index.view.Index');

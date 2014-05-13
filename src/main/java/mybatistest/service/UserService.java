@@ -5,6 +5,6 @@ import mybatistest.entity.Scusers;
 
 public interface UserService extends BaseService<Scusers>{
 
-	public Boolean userLogin(String userNumber, String userPassword) throws CommonException;  
+	public Scusers userLogin(String userNumber, String userPassword) throws CommonException;  
 
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,8 +25,11 @@ import mybatistest.utils.HibernateUtil;
 public class UserServiceImpl extends BaseServiceImpl<Scusers, UserDao>
 		implements UserService {
 	Logger logger = Logger.getLogger(getClass());
+	
+	@Autowired  
+	UserActionLogDao userActionLogDao;
 
-	public Boolean userLogin(String userNumber, String userPassword)
+	public Scusers userLogin(String userNumber, String userPassword)
 			throws CommonException {
 		// ((UserDao) mainDao).getUserString("");
 		// 子类可以不用强制转换了
@@ -54,13 +58,13 @@ public class UserServiceImpl extends BaseServiceImpl<Scusers, UserDao>
 		userActionLog.setActionRemark("成功登录");
 		
 //		Session session = HibernateUtil.getCurrentSession();
-		Session session = this.getMainDao().getSessionFactory().getCurrentSession();
-		session.save(userActionLog);
-		
-//		UserActionLogDao userActionLogDao = new UserActionLogDaoImpl();
+//		Session session = this.getMainDao().getSessionFactory().getCurrentSession();
+//		session.save(userActionLog);
+		Session s = HibernateUtil.getSessionFactory().getCurrentSession();
 //		userActionLogDao.save(userActionLog);
+		s.save(userActionLog);
 		
-		return true;
+		return user;
 	}
 
 }
