@@ -99,7 +99,7 @@
 	</context-param>
 
 	<welcome-file-list>
-		<welcome-file>extjs/application/index.jsp</welcome-file>
-		<!-- <welcome-file>/extjs/application/portal/portal.html</welcome-file> -->
+		<!-- <welcome-file>extjs/application/index.jsp</welcome-file>-->
+		<welcome-file>jsp/login.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>

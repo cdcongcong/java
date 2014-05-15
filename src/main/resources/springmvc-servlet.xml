@@ -56,7 +56,7 @@
 					class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 					<property name="viewClass"
 						value="org.springframework.web.servlet.view.JstlView"></property>
-					<property name="prefix" value="/" />
+					<property name="prefix" value="/jsp/" />
 					<property name="suffix" value=".jsp" />
 				</bean>
 			</list>
@@ -100,8 +100,8 @@
 
 		<property name="exceptionMappings">
 			<props>
-				<prop key="java.lang.Exception">errors/error</prop>
-				<prop key="java.lang.Throwable">errors/err</prop>
+				<prop key="java.lang.Exception">jsp/errors/error</prop>
+				<prop key="java.lang.Throwable">jsp/errors/err</prop>
 			</props>
 		</property>
 
@@ -121,6 +121,7 @@
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:resources/i18n/messages" />
 		<property name="useCodeAsDefaultMessage" value="true" />
+		<property name="cacheSeconds" value="3600"/> 
 	</bean>
 
 

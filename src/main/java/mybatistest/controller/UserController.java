@@ -14,18 +14,10 @@ import mybatistest.entity.Scusers;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-import org.springframework.web.servlet.support.RequestContext;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 
@@ -37,23 +29,13 @@ public class UserController extends BaseController {
 	@Autowired
 	private UserService userService;
 	
-
 	@RequestMapping(value = "/login") //, method = RequestMethod.POST)
 	public ModelAndView Login(String userName, String password,HttpServletRequest request) {
 		log.debug("userName:" + userName);
 		log.debug("password:" + password);
-//		 Locale locale = LocaleContextHolder.getLocale(); 
 
-//		 RequestContext requestContext = new RequestContext(request);
-//		 Locale locale = requestContext.getLocale();
-// 		Locale locale = RequestContextUtils.getLocaleResolver(request).resolveLocale(request);  
- 		LocaleResolver lr = RequestContextUtils.getLocaleResolver(request);
- 		Locale locale = lr.resolveLocale(request);
-		 
-		 log.debug(locale);
-//		logger.debug(messageSource.getMessage("Authentication.emptyPassword", null, locale));
 		HttpSession session = request.getSession();
-		log.debug("USER_SESSION_ID:" + session.getAttribute(HttpSessionContant.USER_SESSION_ID));
+		log.debug("AUTHENTICATION_SESSION_ID:" + session.getAttribute(HttpSessionContant.AUTHENTICATION_SESSION_ID));
 
 		ModelAndView mv = new ModelAndView();
 
@@ -62,11 +44,12 @@ public class UserController extends BaseController {
 			user = userService.userLogin(userName, password); 
 			if (null != user) {
 				log.debug("用户验证成功");
-				session.setAttribute(HttpSessionContant.USER_SESSION_ID, DaoHelper.getUUID());
-				session.setAttribute(HttpSessionContant.USER_ID, user.getUserid());
+				session.setAttribute(HttpSessionContant.AUTHENTICATION_SESSION_ID, DaoHelper.getUUID());
+				session.setAttribute(HttpSessionContant.AUTHENTICATION_ID, user.getUserid());
+				session.setAttribute(HttpSessionContant.AUTHENTICATION_NO, user.getUserno());
+				session.setAttribute(HttpSessionContant.AUTHENTICATION_NAME, user.getUsername());
 				mv.addObject("success", true);
-				user.setPassword(null);
-				mv.addObject(user);
+				mv.addObject("result",user);
 				mv.setViewName("index");
 			}
 		} 
@@ -74,7 +57,12 @@ public class UserController extends BaseController {
 			//验证未通过
 			log.debug("验证未通过");
 			mv.addObject("success", false);
-			mv.addObject("result",messageSource.getMessage(e.getMessage(), new Object[] {userName}, locale));
+
+//			LocaleResolver lr = RequestContextUtils.getLocaleResolver(request);
+//	 		Locale locale = lr.resolveLocale(request);
+//			mv.addObject("result",messageSource.getMessage(e.getMessage(), new Object[] {userName}, locale));
+//			mv.addObject("result",I18nUtil.getMessage(e.getMessage(), new Object[] {userName}, request));
+	 		mv.addObject("result",getMessage(e.getMessage(), new Object[] {userName}, request));
 			mv.setViewName("login");
 			
 		}
@@ -89,35 +77,42 @@ public class UserController extends BaseController {
 		return mv;
 	}
 
+
+	@RequestMapping(value = "/loginout")
+	//, method = RequestMethod.POST)
+	public ModelAndView loginout(
+			HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
+		
+		session.removeAttribute(HttpSessionContant.AUTHENTICATION_SESSION_ID);
+		session.removeAttribute(HttpSessionContant.AUTHENTICATION_ID);
+		session.removeAttribute(HttpSessionContant.AUTHENTICATION_NO);
+		session.removeAttribute(HttpSessionContant.AUTHENTICATION_NAME);
+
+		mv.addObject("success", true);
+		mv.setViewName("login");
+		
+		return mv;
+	}
+	
+	
 	
     @RequestMapping("/changeLocale")
-    public String changeLocale(Locale locale,HttpServletRequest request,
+    public ModelAndView changeLocale(HttpServletRequest request,
     		HttpServletResponse response)
     {
-//        Locale l = LocaleContextHolder.getLocale(); 
-//
-        LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver (request); 
-//      String language = request.getParameter("language");  
-//      Locale locale1 =  StringUtils.parseLocaleString (language); 
-        
-
-//        SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME;
-
-
-
-
-
-        localeResolver.setLocale(request, response, locale);
-        return "redirect:/demo/index.do";
+ 		LocaleResolver lr = RequestContextUtils.getLocaleResolver(request);
+ 		Locale locale = lr.resolveLocale(request);
+    	log.debug(locale);
+    	lr.setLocale(request, response, locale);
+    	ModelAndView mv = new ModelAndView();
+		mv.addObject("success", true);
+		mv.setViewName("login");
+        return mv;
     }
 
 	
 	
-	@RequestMapping(value = "/submit")
-	//, method = RequestMethod.POST)
-	public ModelAndView submit(String userName, String password, String redirectURL,
-			HttpServletRequest request) {
-		return null;
-	}
 
 }
