@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%
-	String path = request.getContextPath();
-	// 获得项目完全路径（假设你的项目叫MyApp，那么获得到的地址就是 http://localhost:8080/MyApp/）:     
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,162 +12,67 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <base href="<%=basePath%>">
-<!-- 
-<link href="css/htmlglobals.css"
-    type="text/css" rel="stylesheet">
--->    
-<link rel="Stylesheet"
-    href="jsp/css/blafplus.css" type="text/css">
-
-<link rel="Stylesheet" href="jsp/css/login/login.css"
-    type="text/css">
-
-<link rel="Stylesheet"
-    href="jsp/css/obips.FormFields.css"
-    type="text/css">
-
 <title>登录</title>
 
+
 </head>
-
+<style>
+* { margin:0 auto; padding:0; border:0;}
+body { background:#0462A5; font:12px "宋体"; color:#004C7E;}
+input { border:1px solid #004C7E;}
+.main { background:url(jsp/images/bg.jpg) repeat-x; height:800px;}
+.login { background:#DDF1FE; width:468px; height:262px; border:1px solid #000;}
+.top { background:url(jsp/images/login_bg.jpg) repeat-x; width:464px; height:113px; border:1px solid #2376B1; margin-top:1px;}
+.logo { background:url(jsp/images/logo.gif) no-repeat; width:214px; height:42px; float:left; margin:29px 0 0 14px;}
+.lable { background:url(jsp/images/lable.gif) no-repeat; width:157px; height:32px; float:right; margin:81px 31px 0 0;}
+.submit { background:url(jsp/images/submit.gif) no-repeat; width:71px; height:24px; border:0;} 
+.reset { background:url(jsp/images/reset.gif) no-repeat; width:71px; height:24px; border:0;} 
+</style>
 <body>
-    <table id="branding" class="branding" width="100%" border="0"
-        cellpadding="0" cellspacing="0">
-        <tbody>
-            <tr>
-                <td id="logoCell" class="logo" width="119" valign="middle"
-                    height="25"><img alt="11.1.1.7.0" title="11.1.1.7.0"
-                    src="/analytics/res/sk_blafp/login/oracle_logo.png" width="119"
-                    border="0" height="25"></td>
-                <td class="topbody bottomborder" valign="top" width="*" align="left"><span
-                    id="appName" style="position: absolute; top: 2px; left: 120px;"
-                    class="appname">Business Intelligence</span></td>
-                <td align="right"
-                    class="padding-right12 padding-left12 topbody bottomborder"
-                    nowrap="nowrap"><div align="right">
-                        <img src="/analytics/res/sk_blafp/login/spacer.gif" alt="X"
-                            width="11" height="1"><a id="helpLink" class="pagelink"
-                            href="/analytics/olh/l_zh-CN/biee0361.htm">帮助</a>
-                    </div></td>
-            </tr>
-        </tbody>
-    </table>
-    <table id="content" class="stylenormal" width="100%" border="0"
-        cellpadding="0" cellspacing="10" style="display: table;">
-        <tbody>
-            <tr>
-                <td id="content-cell">
-                    <div align="center" class="centerDiv">
-                        <table width="180" border="0" cellpadding="0" cellspacing="0">
-                            <tbody>
-                                <tr>
-                                    <td class="lefttop"></td>
-                                    <td class="topmiddle" width="100%" height="12"></td>
-                                    <td class="righttop"></td>
-                                </tr>
-
-                                <tr>
-                                    <td class="leftmiddle"></td>
-                                    <td class="boxcontent" width="100">
-
-                                        <form id="logonForm" method="post" action="user/login">
-
-                                            <table width="100%" cellpadding="0" cellspacing="0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="loginlabel" nowrap="nowrap">登录</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="opttext" nowrap="nowrap">请输入您的用户帐号和口令。<br>
-                                                            <br></td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td class="stylenormal" nowrap="nowrap">
-                                                            <div class="margin-top3">
-                                                                <label for="sawlogonuser">用户帐号</label><br>
-                                                            </div> <input id="sawlogonuser" class="margin-top5" type="text"
-                                                            name="userName" value="" size="50" style="width: 200px;">
-                                                            <div class="margin-top5">
-                                                                <label for="sawlogonpwd">口令 </label><br>
-                                                            </div> <input id="sawlogonpwd" class="margin-top5"
-                                                            type="password" name="password" size="50"
-                                                            style="width: 200px;" autocomplete="off"> <input
-                                                            type="hidden" name="Locale" value=""> <br> <br>
-                                                            <img src="/analytics/res/sk_blafp/login/spacer.gif"
-                                                            alt="X" width="5" height="10"> <input id="idlogon"
-                                                            type="submit" class="button" style="width: 120px;"
-                                                            onmouseover="NQWSetHasClassName(document.getElementById('idlogon'), 'buttonOver', true)"
-                                                            onmouseout="NQWSetHasClassName(document.getElementById('idlogon'), 'buttonOver')"
-                                                            value="登录"> <br> <br>
-                                                            <br>
-
-
-
-                                                            <hr> <label for="selectlanguage"><span
-                                                                class="offScreenVPATLabel">选择语言</span></label> <img
-                                                            src="jsp/pic/world_36x20.png"
-                                                            style="visibility: visible;" class="defaultHidden"
-                                                            width="36" align="bottom" height="20" alt="选择语言"
-                                                            title="选择语言"> <select id="selectlanguage"
-                                                            style="visibility: visible;" class="defaultHidden"
-                                                            onchange="return onLangChange(false)">
-                                                                <option value="en" locale="en-us">English</option>
-                                                                <option value="zh-CN" selected="" locale="zh-cn">中文
-                                                                    -Chinese</option>
-                                                                
-                                                        </select>
-
-
-
-                                                        </td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                        </form>
-                                    </td>
-                                    <td class="rightmiddle"></td>
-                                </tr>
-                                <tr>
-                                    <td class="leftbottom"></td>
-                                    <td class="bottommiddle" width="100%" height="12"></td>
-                                    <td class="rightbottom"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <table id="footer" class="footer" width="100%" border="0"
-        cellpadding="0" cellspacing="0">
-        <tbody>
-            <tr></tr>
-            <tr>
-                <td id="copyRight" class="Copyright">版权所有 © 1997, 2013, Oracle
-                    和/或其附属公司。保留所有权利。</td>
-                <td class="padding-right12 padding-left12"><div align="right">
-                        <p>
-                            <a class="pagelink" id="aboutProduct"
-                                href="/analytics/saw.dll?aboutPage">关于产品</a>
-                        </p>
-                    </div></td>
-            </tr>
-        </tbody>
-    </table>
-	
-	
-	
+<table width="100%" class="main" cellpadding="0" cellspacing="0">
+  <tr>
+   <td>
+    <div class="login">
+     <div class="top">
+      <div class="logo"></div>
+      <div class="lable"></div>
+     </div>
+     <table width="468" cellpadding="0" cellspacing="0">
+       <tr>
+         <td width="282" style="padding-top:17px;">
+          <form id="logonForm" method="post" action="user/login">
+           <table width="100%" cellpadding="0" cellspacing="0">
+             <tr>
+               <td align="right" height="27">用户</td>
+               <td align="right" width="161"><input type="text" id="user" name="userName"/></td>
+             </tr>
+             <tr>
+               <td align="right" height="27">密码</td>
+               <td align="right" width="161"><input type="text" id="password" name="password"/></td>
+             </tr>
+             <tr>
+               <td align="right" height="27">选择语言</td>
+               <td align="right" width="161"><input type="text" id="branch" /></td>
+             </tr>
+           </table>
+           </form>
+         </td>
+         <td style="padding-top:30px;">
+           <table width="100%" cellpadding="0" cellspacing="0">
+             <tr><td align="center" height="29"><input name="submit" type="submit" value="" class="submit" onclick="document.forms[0].submit();" /></td></tr>
+             <tr><td align="center" height="29"><input name="reset" type="button" class="reset" /></td></tr>
+           </table>
+         </td>
+       </tr>
+     </table>
+     <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:28px;">
+       <tr>
+         <td align="center">Conpyright 2014 tongwei Co.Ltd</td>
+       </tr>
+     </table>
+    </div><!--login -->
+   </td>
+  </tr>  
+</table>
 </body>
 </html>
