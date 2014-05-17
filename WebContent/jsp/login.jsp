@@ -18,7 +18,7 @@
 </head>
 <style>
 * { margin:0 auto; padding:0; border:0;}
-body { background:#0462A5; font:12px "宋体"; color:#004C7E;}
+body { background:#0462A5; font:14px "宋体"; color:#004C7E;}
 input { border:1px solid #004C7E;}
 .main { background:url(jsp/images/bg.jpg) repeat-x; height:800px;}
 .login { background:#DDF1FE; width:468px; height:262px; border:1px solid #000;}
@@ -44,15 +44,15 @@ input { border:1px solid #004C7E;}
            <table width="100%" cellpadding="0" cellspacing="0">
              <tr>
                <td align="right" height="27">用户</td>
-               <td align="right" width="161"><input type="text" id="user" name="userName"/></td>
+               <td align="right" width="161"><input style="height:22px" type="text" id="user" name="userName"/></td>
              </tr>
              <tr>
                <td align="right" height="27">密码</td>
-               <td align="right" width="161"><input type="text" id="password" name="password"/></td>
+               <td align="right" width="161" height="32"><input style="height:22px" type="text" id="password" name="password"/></td>
              </tr>
              <tr>
                <td align="right" height="27">选择语言</td>
-               <td align="right" width="161"><input type="text" id="branch" /></td>
+               <td align="right" width="161"><input style="height:22px" type="text" id="branch" /></td>
              </tr>
            </table>
            </form>

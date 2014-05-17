@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/jsp=UTF-8
+encoding//WebContent/jsp/index.jsp=UTF-8
 encoding//WebContent/jsp/login.jsp=UTF-8
 encoding//src/main/resources/log4j.properties=UTF-8
 encoding/<project>=UTF-8
