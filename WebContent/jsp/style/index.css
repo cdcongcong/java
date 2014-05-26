@@ -1,0 +1,198 @@
+@CHARSET "UTF-8";
+/* CSS Document */
+/*基本信息*/
+body {
+	font-family: "宋体", Arial, Verdana, sans-serif, Helvetica;
+	font-size: 12px;
+	margin: 0;
+}
+/*页面层容器*/
+#container {
+	width: 100%;
+}
+
+/*页面头部*/
+#header {
+	margin: 0 auto;
+}
+
+#banner {
+	background: url(../images/top_bg.jpg) repeat-x;
+	height: 57px;
+}
+
+#companylogo {
+	background: url(../images/top_lf.jpg) no-repeat;
+	height: 57px;
+	width: 289px;
+	float: left;
+}
+
+#bannerright {
+	margin: 0 0 0 290px;
+}
+
+#sysdate {
+	height: 21px;
+	color: #FFF;
+	padding: 8px 0 0 6px;
+}
+
+#applicationname {
+	background: url(../images/top_lable.jpg) no-repeat;
+	width: 120px;
+	height: 20px;
+	float: left;
+	color: #FFF;
+	padding: 8px 0 0 6px;
+}
+
+.sys_menu {
+	background: url(../images/top_menu.jpg) no-repeat;
+	width: 348px;
+	height: 28px;
+	float: right;
+}
+
+.sys_menu ul {
+	margin: 8px 0 0 0;
+	list-style: none;
+}
+
+.sys_menu li {
+	display: inline;
+}
+
+.sys_menu a {
+	float: left;
+	text-decoration: none;
+	padding-left: 3px;
+}
+
+.sys_menu a:hover {
+	text-decoration: none;
+}
+
+.sys_menu a span {
+	display: block;
+	padding-right: 10px;
+	color: #FFF;
+}
+
+.sys_menu a:hover span {
+	color: #004c7e;
+}
+
+#main_menu_div {
+	background: url(../images/menu_bg.jpg) repeat-x;
+	height: 25px;
+}
+
+.main_menu_user {
+	background: url(../images/menu_left.jpg) no-repeat;
+	width: 155px;
+	height: 22px;
+	float: left;
+	margin: 3px 0 0 6px;
+	text-align: center;
+}
+
+.main_menu_user p {
+	margin-top: 5px;
+	color: #FFF;
+}
+
+.main_menu_list {
+	width: 100%;
+	height: 25px;
+}
+
+.main_menu_list ul {
+	margin: 0;
+	padding: 4px 0 0 70px;
+	list-style: none;
+}
+
+.main_menu_list li {
+	display: inline;
+}
+
+.main_menu_list a {
+	float: left;
+	text-decoration: none;
+}
+
+.main_menu_list a span {
+	display: block;
+	padding: 4px 10px 0 10px;
+	color: #004c7e;
+}
+
+.main_menu_list a:hover span {
+	color: #FFF;
+	border: 1px solid #004c7e;
+}
+
+.main_menu_list a:hover {
+	background: url(../images/menu_list.jpg) repeat-x;
+}
+
+/*页面主体*/
+#pagebody {
+	width: 100%;
+	height: 100px;
+	margin: 0 auto;
+}
+
+#leftsidebar {
+	width: 162px;
+	height: 100%;
+}
+
+#functionmenutop {
+	background: url(../images/list_top.gif) no-repeat;
+	height: 28px;
+}
+
+#functionmenubody {
+	width: 162px;
+	height: 100%;
+}
+
+#functionmenubodytop{
+	background:#D4ECFC;
+	height: 40px;
+	
+}
+.functionmenutitle {
+	background: url(../images/list_task.jpg) repeat-x;
+	height: 25px;
+	text-align: center;
+	color: #004C7E;
+	line-height:25px;
+}
+
+.functionMenuitem{
+	background:#D4ECFC;
+	height: 22px;
+	padding-left: 20px;
+	line-height:22px;
+}
+
+.functionMenuitem a {
+    color: #004C7E;
+    text-decoration: none;
+}
+
+.functionMenuitem a:hover {
+    color: #004C7E;
+    text-decoration: underline;
+    font-weight:blod;
+}
+
+/*页面底部*/
+#footer {
+	width: 800px;
+	margin: 0 auto;
+	height: 50px;
+}

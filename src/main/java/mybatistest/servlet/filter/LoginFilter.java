@@ -11,13 +11,12 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import mybatistest.common.contant.*;
 
 
 import org.apache.log4j.Logger;
 
 public class LoginFilter implements Filter {
-
-	public final static String SEESION_MEMBER = "session_member";
 	
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
@@ -26,9 +25,9 @@ public class LoginFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-		Logger logger = Logger.getLogger(LoginFilter.class);
-		chain.doFilter(request, response);
-		/*
+//		chain.doFilter(request, response);
+		Logger logger = Logger.getLogger(getClass());
+		
 		// 获得在下面代码中要用的request,response,session对象
 		HttpServletRequest servletRequest = (HttpServletRequest) request;
 		HttpServletResponse servletResponse = (HttpServletResponse) response;
@@ -44,8 +43,8 @@ public class LoginFilter implements Filter {
 		logger.debug("path:" + path);
 
 		// 从session里取员工工号信息
-		String user = (String) session.getAttribute(SEESION_MEMBER);
-*/
+		String sessionID = (String) session.getAttribute(HttpSessionContant.AUTHENTICATION_SESSION_ID);
+
 		/*
 		 * 创建类Constants.java，里面写的是无需过滤的页面 for (int i = 0; i <
 		 * Constants.NoFilter_Pages.length; i++) {
@@ -53,7 +52,7 @@ public class LoginFilter implements Filter {
 		 * if (path.indexOf(Constants.NoFilter_Pages[i]) > -1) {
 		 * chain.doFilter(servletRequest, servletResponse); return; } }
 		 */
-/*
+
 		// 登陆页面无需过滤
 		if (path.indexOf("/login.jsp") > -1) {
 			chain.doFilter(request, response);
@@ -61,26 +60,26 @@ public class LoginFilter implements Filter {
 			return;
 		}
 
-		if (path.indexOf("/user/submit") > -1) {
+		if (path.indexOf("/user/login") > -1) {
 			chain.doFilter(request, response);
 			logger.debug("到登录控制器");
 			return;
 		}
 
 		// 判断如果没有取到员工信息,就跳转到登陆页面
-		if (user == null || "".equals(user)) {
+		if (sessionID == null || "".equals(sessionID)) {
 			// 跳转到登陆页面
 //			servletResponse.sendRedirect("/login.jsp");
 			logger.debug("没有登录过，到登录页面");
 //			request.getRequestDispatcher(ContextPath + "/login.jsp").forward(request, response);
-			servletResponse.sendRedirect(ContextPath + "/login.jsp");
+			servletResponse.sendRedirect(ContextPath + "/jsp/login.jsp");
 
 		} else {
 			logger.debug("已经登陆,继续此次请求");
 			// 已经登陆,继续此次请求
 			chain.doFilter(request, response);
 		}
-*/
+
 	}
 
 	public void destroy() {

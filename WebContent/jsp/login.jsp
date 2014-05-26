@@ -1,21 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://"
-            + request.getServerName() + ":" + request.getServerPort()
-            + path + "/";
-%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ include file="includeJsp.jsp"%> 
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<base href="<%=basePath%>">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<base href="<%=basePath%>"/>
 <title>登录</title>
 
-
-</head>
 <style>
 * { margin:0 auto; padding:0; border:0;}
 body { background:#0462A5; font:14px "宋体"; color:#004C7E;}
@@ -28,6 +22,8 @@ input { border:1px solid #004C7E;}
 .submit { background:url(jsp/images/submit.gif) no-repeat; width:71px; height:24px; border:0;} 
 .reset { background:url(jsp/images/reset.gif) no-repeat; width:71px; height:24px; border:0;} 
 </style>
+
+</head>
 <body>
 <table width="100%" class="main" cellpadding="0" cellspacing="0">
   <tr>
@@ -48,7 +44,7 @@ input { border:1px solid #004C7E;}
              </tr>
              <tr>
                <td align="right" height="27">密码</td>
-               <td align="right" width="161" height="32"><input style="height:22px" type="text" id="password" name="password"/></td>
+               <td align="right" width="161" height="32"><input style="height:22px" type="password" id="password" name="password"/></td>
              </tr>
              <tr>
                <td align="right" height="27">选择语言</td>

@@ -1,5 +1,6 @@
 package mybatistest.controller;
 
+import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContextUtils;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 
 @Controller
@@ -48,9 +51,13 @@ public class UserController extends BaseController {
 				session.setAttribute(HttpSessionContant.AUTHENTICATION_ID, user.getUserid());
 				session.setAttribute(HttpSessionContant.AUTHENTICATION_NO, user.getUserno());
 				session.setAttribute(HttpSessionContant.AUTHENTICATION_NAME, user.getUsername());
+				session.setAttribute("result", user);
+				session.setAttribute("sysdate", new Date().toString());
 				mv.addObject("success", true);
 				mv.addObject("result",user);
-				mv.setViewName("index");
+//				mv.addObject("sysdate",new Date().toString());
+				//重定向到主页
+				mv.setViewName("redirect:/jsp/index.jsp");
 			}
 		} 
 		catch(CommonException e){
