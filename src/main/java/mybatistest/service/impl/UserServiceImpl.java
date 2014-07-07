@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.thoughtworks.xstream.mapper.Mapper.Null;
+
 import mybatistest.common.exception.CommonException;
 import mybatistest.dao.UserActionLogDao;
 import mybatistest.dao.UserDao;
@@ -65,6 +67,11 @@ public class UserServiceImpl extends BaseServiceImpl<Scusers, UserDao>
 		s.save(userActionLog);
 		
 		return user;
+	}
+
+	@Override
+	public List<Scusers> getList() {
+		return getMainDao().find("from Scusers", null);
 	}
 
 }

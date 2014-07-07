@@ -1,6 +1,8 @@
 package mybatistest.controller;
 
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +14,7 @@ import mybatistest.utils.DaoHelper;
 import mybatistest.common.contant.*;
 import mybatistest.common.exception.CommonException;
 import mybatistest.entity.Scusers;
+import mybatistest.utils.JsonUtils;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +24,10 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 
 @Controller
-@RequestMapping("/user/*")
+@RequestMapping("/user")
 public class UserController extends BaseController {
 	Logger log = Logger.getLogger(getClass());
 
@@ -119,6 +121,24 @@ public class UserController extends BaseController {
         return mv;
     }
 
+	@RequestMapping(value = "") //, method = RequestMethod.POST)
+	public ModelAndView getList(HttpServletRequest request) {
+		log.debug("===============getList===============");
+		Enumeration enu=request.getParameterNames();
+		while(enu.hasMoreElements()){
+		String paraName=(String)enu.nextElement();
+		System.out.println(paraName+": "+request.getParameter(paraName));
+		}
+
+		
+		List<Scusers> urows = userService.getList();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("success", true);
+		mv.addObject("total", urows.size());
+		mv.addObject("rows", urows);
+//		mv.setViewName("login");
+        return mv;
+	}
 	
 	
 

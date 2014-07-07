@@ -19,7 +19,6 @@ import org.apache.log4j.Logger;
 public class LoginFilter implements Filter {
 	
 	public void init(FilterConfig filterConfig) throws ServletException {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -83,7 +82,6 @@ public class LoginFilter implements Filter {
 	}
 
 	public void destroy() {
-		// TODO Auto-generated method stub
 
 	}
 

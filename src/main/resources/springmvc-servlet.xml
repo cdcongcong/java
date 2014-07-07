@@ -28,7 +28,7 @@
 		两个bean,是spring MVC为@Controllers分发请求所必须的。 并提供了：数据绑定支持，@NumberFormatannotation支持，@DateTimeFormat支持，@Valid支持， 
 		读写XML的支持（JAXB），读写JSON的支持（Jackson）。 -->
 
-	<!-- JSON -->
+	<!-- 协商 -->
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<!-- 设置为true以忽略对Accept Header的支持 -->
@@ -66,7 +66,23 @@
 			<list>
 				<!-- ModelAndView里的数据变成JSON -->
 				<bean
-					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" >
+					<property name="extractValueFromSingleKeyModel" value="false" />
+					<property name="objectMapper" >
+					  <bean class="org.codehaus.jackson.map.ObjectMapper" >
+					  <property name="serializationInclusion">
+					   <value type="org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion">NON_NULL</value>
+					  </property>
+					  <property name="dateFormat">
+					  <bean class="java.text.SimpleDateFormat">
+					    <constructor-arg>
+					    <value>yyyy-MM-dd HH:mm:ss</value>
+					    </constructor-arg>
+					  </bean>
+					  </property>
+					  </bean>
+					  </property>
+					</bean>
 				<!-- XML -->
 				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
 					<property name="marshaller">

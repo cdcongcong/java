@@ -60,6 +60,7 @@ public class BaseDaoImpl<T>  implements BaseDao<T> {
 			} else {
 				log.debug("get successful, instance found");
 			}
+
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -69,8 +70,9 @@ public class BaseDaoImpl<T>  implements BaseDao<T> {
 	
 
 	
-    public List<T> find(String hql, List<Object> param) {  
-        Query q = this.getCurrentSession().createQuery(hql);  
+    public List<T> find(String hql, List<Object> param) { 
+    	System.out.print(sessionFactory);
+        Query q = sessionFactory.getCurrentSession().createQuery(hql);  
         if (param != null && param.size() > 0) {  
             for (int i = 0; i < param.size(); i++) {  
                 q.setParameter(i, param.get(i));  
@@ -82,7 +84,7 @@ public class BaseDaoImpl<T>  implements BaseDao<T> {
 	public List<T> findByExample(T instance) {
 		log.debug("finding "+ this.clazz +" instance by example");
 try {
-			List<T> results = this.getCurrentSession()
+			List<T> results = sessionFactory.getCurrentSession()
 					.createCriteria(this.clazz)
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
