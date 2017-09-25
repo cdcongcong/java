@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2014-5-9 16:26:51 by Hibernate Tools 4.0.0 -->
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-19 9:41:30 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="mybatistest.entity.UserActionLog" table="USER_ACTION_LOG">
         <id name="logId" type="string">
@@ -14,11 +14,11 @@
         <property name="actionType" type="string">
             <column name="ACTION_TYPE" />
         </property>
-        <property name="actionDate" type="timestamp">
+        <property name="actionDate" type="date">
             <column name="ACTION_DATE" length="7" />
         </property>
         <property name="actionRemark" type="string">
-            <column name="ACTION_REMARK" />
+            <column name="ACTION_REMARK" length="4000" />
         </property>
     </class>
 </hibernate-mapping>

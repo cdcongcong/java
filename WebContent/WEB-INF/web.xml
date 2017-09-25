@@ -79,7 +79,7 @@
   <welcome-file-list>
     <welcome-file>jsp/login.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
+  <!-- <servlet>
     <description>Apache CXF Endpoint</description>
     <display-name>cxf</display-name>
     <servlet-name>cxf</servlet-name>
@@ -120,4 +120,5 @@
     <servlet-name>AdminServlet</servlet-name>
     <url-pattern>/servlet/AdminServlet</url-pattern>
   </servlet-mapping>
+-->  
 </web-app>

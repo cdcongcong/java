@@ -3,7 +3,6 @@
 	<name>mybatistest</name>
 	<comment></comment>
 	<projects>
-		<project>webservicetest</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

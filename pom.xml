@@ -6,13 +6,14 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<org.springframework-version>
-			4.0.3.RELEASE
+			4.1.2.RELEASE
 		</org.springframework-version>
 		<org.springframework.security.version>3.1.4.RELEASE</org.springframework.security.version>
 		<org.mybatis-version>
 			3.2.6
 		</org.mybatis-version>
 		<junit-version>4.11</junit-version>
+		<hibernate-version>4.3.7.Final</hibernate-version>
 	</properties>
 	<dependencies>
 
@@ -25,50 +26,50 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.3.5.Final</version>
+			<version>${hibernate-version}</version>
 		</dependency>
 		<!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.3.5.Final</version>
+			<version>${hibernate-version}</version>
 		</dependency>
 		<!-- tools -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-jpamodelgen</artifactId>
-			<version>4.3.5.Final</version>
+			<version>${hibernate-version}</version>
 		</dependency>
 		<!-- optional -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-osgi</artifactId>
-			<version>4.3.5.Final</version>
+			<version>${hibernate-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-envers</artifactId>
-			<version>4.3.5.Final</version>
+			<version>${hibernate-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
-			<version>4.3.5.Final</version>
+			<version>${hibernate-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-proxool</artifactId>
-			<version>4.3.5.Final</version>
+			<version>${hibernate-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-infinispan</artifactId>
-			<version>4.3.5.Final</version>
+			<version>${hibernate-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-ehcache</artifactId>
-			<version>4.3.5.Final</version>
+			<version>${hibernate-version}</version>
 		</dependency>
 
 		<dependency>
@@ -178,11 +179,26 @@
 
 
 
+		<!-- <dependency> <groupId>org.codehaus.jackson</groupId> <artifactId>jackson-mapper-asl</artifactId> 
+			<version>1.9.13</version> </dependency> -->
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.13</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.4.3</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.4.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.4.3</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>log4j</groupId>

@@ -49,6 +49,7 @@ input { border:1px solid #004C7E;}
              <tr>
                <td align="right" height="27">选择语言</td>
                <td align="right" width="161"><input style="height:22px" type="text" id="branch" /></td>
+               <div id="sysdate">${result}</div>
              </tr>
            </table>
            </form>

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2014-5-8 9:57:52 by Hibernate Tools 4.0.0 -->
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-19 9:41:30 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="mybatistest.entity.Scusers" table="SCUSERS" dynamic-update="true" dynamic-insert="true">
+    <class name="mybatistest.entity.Scusers" table="SCUSERS">
         <comment>&#211;&#195;&#187;&#167;&#177;&#237;</comment>
         <id name="userid" type="string">
             <column name="USERID" />
@@ -65,17 +65,17 @@
                 <comment>&#203;&#248;&#182;&#168;</comment>
             </column>
         </property>
-        <property name="lastlogin" type="timestamp">
+        <property name="lastlogin" type="date">
             <column name="LASTLOGIN" length="7">
                 <comment>&#215;&#238;&#186;&#243;&#181;&#199;&#194;&#188;&#202;&#177;&#188;&#228;</comment>
             </column>
         </property>
-        <property name="lastpwdset" type="timestamp">
+        <property name="lastpwdset" type="date">
             <column name="LASTPWDSET" length="7">
                 <comment>&#215;&#238;&#186;&#243;&#201;&#232;&#214;&#195;&#195;&#220;&#194;&#235;&#202;&#177;&#188;&#228;</comment>
             </column>
         </property>
-        <property name="pwdexdate" type="timestamp">
+        <property name="pwdexdate" type="date">
             <column name="PWDEXDATE" length="7">
                 <comment>&#195;&#220;&#194;&#235;&#181;&#189;&#198;&#218;&#202;&#177;&#188;&#228;</comment>
             </column>
@@ -83,13 +83,13 @@
         <property name="createuserid" type="string">
             <column name="CREATEUSERID" />
         </property>
-        <property name="createdate" type="timestamp">
+        <property name="createdate" type="date">
             <column name="CREATEDATE" length="7" />
         </property>
         <property name="updateuserid" type="string">
             <column name="UPDATEUSERID" />
         </property>
-        <property name="updatedate" type="timestamp">
+        <property name="updatedate" type="date">
             <column name="UPDATEDATE" length="7" />
         </property>
         <property name="owneruserid" type="string">
@@ -104,9 +104,7 @@
             </column>
         </property>
         <property name="userTestApp" type="string">
-            <column name="USER_TEST_APP">
-                <comment>&#178;&#226;&#202;&#212;&#207;&#194;&#187;&#174;&#207;&#223;&#215;&#214;&#182;&#206;&#215;&#170;pojo</comment>
-            </column>
+            <column name="USER_TEST_APP" />
         </property>
     </class>
 </hibernate-mapping>

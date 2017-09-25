@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Calc" targetNamespace="http://www.example.org/Calc/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/Calc/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:p="http://schemas.xmlsoap.org/wsdl/http/">
+    <wsdl:types>
+    	<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    		targetNamespace="http://www.example.org/Calc/">
+    		<xsd:element name="NewOperation">
+    			<xsd:complexType>
+    				<xsd:sequence>
+
+    					<xsd:element name="in" type="xsd:string"></xsd:element>
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:element>
+    		<xsd:element name="NewOperationResponse">
+    			<xsd:complexType>
+    				<xsd:sequence>
+
+    					<xsd:element name="out" type="xsd:string"></xsd:element>
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:element>
+    	</xsd:schema></wsdl:types>
+    <wsdl:message name="NewOperationRequest">
+    	<wsdl:part name="parameters" element="tns:NewOperation"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="NewOperationResponse">
+    	<wsdl:part name="parameters" element="tns:NewOperationResponse"></wsdl:part>
+    </wsdl:message>
+</wsdl:definitions>

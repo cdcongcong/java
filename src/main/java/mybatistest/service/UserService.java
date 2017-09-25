@@ -9,6 +9,6 @@ public interface UserService extends BaseService<Scusers>{
 
 	public Scusers userLogin(String userNumber, String userPassword) throws CommonException;
 	
-	public List<Scusers> getList();
 
+	public void jdbcTest();
 }

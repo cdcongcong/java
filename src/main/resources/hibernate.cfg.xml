@@ -8,13 +8,19 @@
 			<property name="hibernate.connection.url">jdbc:oracle:thin:@127.0.0.2:1521:XE</property> 
 			<property name="hibernate.connection.username">mybatis</property> <property 
 			name="hibernate.default_schema">MYBATIS</property> -->
+		<property name="hibernate.connection.autocommit">false</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.show_sql">true</property>
+        
 		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</property>
+
 
 
 		<mapping resource="mybatistest/entity/Scusers.hbm.xml" />
 		<mapping resource="mybatistest/entity/UserActionLog.hbm.xml" />
 
+
+        <class-cache class="mybatistest.entity.Scusers" usage="read-write"/>
+        <class-cache class="mybatistest.entity.UserActionLog" usage="read-only"/>
 	</session-factory>
 </hibernate-configuration>

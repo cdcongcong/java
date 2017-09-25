@@ -13,7 +13,10 @@ import mybatistest.service.UserService;
 import mybatistest.utils.DaoHelper;
 import mybatistest.common.contant.*;
 import mybatistest.common.exception.CommonException;
+import mybatistest.dao.UserActionLogDao;
+import mybatistest.dao.impl.UserActionLogDaoImpl;
 import mybatistest.entity.Scusers;
+import mybatistest.entity.UserActionLog;
 import mybatistest.utils.JsonUtils;
 
 import org.apache.log4j.Logger;
@@ -33,6 +36,7 @@ public class UserController extends BaseController {
 
 	@Autowired
 	private UserService userService;
+
 	
 	@RequestMapping(value = "/login") //, method = RequestMethod.POST)
 	public ModelAndView Login(String userName, String password,HttpServletRequest request) {
@@ -140,6 +144,23 @@ public class UserController extends BaseController {
         return mv;
 	}
 	
+	@RequestMapping(value = "/get") //, method = RequestMethod.POST)
+	public ModelAndView get(HttpServletRequest request) {
+		log.debug("===============get===============");
+
+		List<Scusers> urows = userService.getList();
+		ModelAndView mv = new ModelAndView();
+		System.out.println(JsonUtils.bean2JsonString(urows.get(0)));
+		System.out.println(JsonUtils.Bean2JsonFormatString(urows.get(0)));
+//		mv.addObject("success", true);
+//		mv.addObject("total", urows.size());
+		
+		userService.jdbcTest();
+		
+		mv.addObject("rows", urows);
+//		mv.setViewName("login");
+        return mv;
+	}
 	
 
 }

@@ -1,27 +1,31 @@
 package mybatistest.service.impl;
 
-import java.math.BigDecimal;
-import java.util.Calendar;
+import java.sql.Connection;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+
+import javax.management.Query;
 
 import org.apache.log4j.Logger;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.dialect.Dialect;
+import org.hibernate.transform.AliasToBeanResultTransformer;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.thoughtworks.xstream.mapper.Mapper.Null;
 
 import mybatistest.common.exception.CommonException;
 import mybatistest.dao.UserActionLogDao;
 import mybatistest.dao.UserDao;
-import mybatistest.dao.impl.UserActionLogDaoImpl;
+import mybatistest.dao.impl.JdbcDaoTest;
 import mybatistest.entity.Scusers;
 import mybatistest.entity.UserActionLog;
 import mybatistest.service.UserService;
 import mybatistest.utils.DaoHelper;
 import mybatistest.utils.HibernateUtil;
+import mybatistest.utils.JsonUtils;
 
 @Service
 public class UserServiceImpl extends BaseServiceImpl<Scusers, UserDao>
@@ -30,7 +34,14 @@ public class UserServiceImpl extends BaseServiceImpl<Scusers, UserDao>
 	
 	@Autowired  
 	UserActionLogDao userActionLogDao;
+	@Autowired
+	UserDao userDao;
+	@Autowired  
+	JdbcDaoTest jdbcDaoTest;
+	
+	
 
+	
 	public Scusers userLogin(String userNumber, String userPassword)
 			throws CommonException {
 		// ((UserDao) mainDao).getUserString("");
@@ -38,7 +49,7 @@ public class UserServiceImpl extends BaseServiceImpl<Scusers, UserDao>
 
 		Scusers loginUser = new Scusers();
 		loginUser.setUserno(userNumber);
-		List<Scusers> scusers = getMainDao().findByExample(loginUser);
+		List<Scusers> scusers = userDao.findByExample(loginUser);
 		if (0 == scusers.size()) {
 			// return "用户不存在！";
 			throw new CommonException("Authentication.notFound");
@@ -50,7 +61,7 @@ public class UserServiceImpl extends BaseServiceImpl<Scusers, UserDao>
 		}
 		//保存最近登录信息
 		user.setLastlogin(new Date());
-		this.getMainDao().attachDirty(user);//.persist(user);//.attachDirty(user);.merge(user);
+		this.userDao.attachDirty(user);//.persist(user);//.attachDirty(user);.merge(user);
 		//记录登录日志
 		UserActionLog userActionLog = new UserActionLog();
 		userActionLog.setLogId(DaoHelper.getUUID());
@@ -62,16 +73,54 @@ public class UserServiceImpl extends BaseServiceImpl<Scusers, UserDao>
 //		Session session = HibernateUtil.getCurrentSession();
 //		Session session = this.getMainDao().getSessionFactory().getCurrentSession();
 //		session.save(userActionLog);
-		Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-//		userActionLogDao.save(userActionLog);
-		s.save(userActionLog);
+//		Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+		userActionLogDao.save(userActionLog);
+//		s.save(userActionLog);
 		
 		return user;
 	}
 
 	@Override
 	public List<Scusers> getList() {
-		return getMainDao().find("from Scusers", null);
+		return userDao.find("from Scusers", null);
 	}
+	
+	public void jdbcTest(){
+		
+//		UserActionLog userActionLog = new UserActionLog();
+//		userActionLog.setLogId(DaoHelper.getUUID());
+//		userActionLog.setUserId("1111111111");
+//		userActionLog.setActionType("Hibernate");
+//		
+//
+//	
+//		UserActionLog userActionLog2 = new UserActionLog();
+//		userActionLog2.setLogId(userActionLog.getLogId());
+//		userActionLog2.setUserId("2222222222");
+//		userActionLog2.setActionType("JdbcTemplate");
+//
+//		jdbcDaoTest.insertPersonUseUpdate(userActionLog2);
+//		
+//		userActionLogDao.save(userActionLog);
+//		userActionLogDao.getSessionFactory().getCurrentSession().flush();
+
+		Session session = userActionLogDao.getSessionFactory().getCurrentSession();
+//		session.beginTransaction();
+//		session.createQuery("");
+//		Transformers transformers;
+//		List list =  session.createSQLQuery("select userid as \"userid\", orderno as \"orderno\", userno as \"userno\", username as \"username\" from scusers").setResultTransformer(new AliasToBeanResultTransformer(Scusers.class)).list();
+		List list =  session.createSQLQuery("select userid as \"userid\", orderno as \"orderno\", userno as \"userno\", username as \"username\" from scusers").setResultTransformer(Transformers.aliasToBean(Scusers.class)).list();
+		System.out.println(JsonUtils.Bean2JsonFormatString(list));
+//		Transformers transformers;
+		SQLQuery query = session.createSQLQuery("delete from user_action_log");
+//		query.setParameters(values, types);
+		query.executeUpdate();
+		Properties pro = new Properties();  
+		pro.setProperty("hibernate.dialect", "org.hibernate.dialect.OracleDialect");  
+		Dialect dialect = Dialect.getDialect(pro);  
+		String sqlQuery = dialect.getLimitString("Select * from tabel", 1, 5);
+		System.out.println(sqlQuery);
+	}	
+	
 
 }

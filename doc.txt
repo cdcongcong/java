@@ -5,6 +5,15 @@ http://www.haogongju.net/art/2249114
 http://denger.iteye.com/blog/1126423/
 http://jsczxy2.iteye.com/blog/1295736
 http://www.oschina.net/code/snippet_176115_9639
+http://blog.csdn.net/jiuqiyuliang/article/details/45132493/
+http://www.cnblogs.com/hellokitty1/p/5216025.html
+http://zhaoshijie.iteye.com/blog/2003209
+http://blog.csdn.net/isea533/article/details/44193939
+http://www.cnblogs.com/luoxn28/p/5932648.html
+http://blog.csdn.net/isea533/article/details/41457529
+http://www.jb51.net/article/96750.htm
+
+
 
 插件
 http://mybatis.googlecode.com/svn/sub-projects/generator/trunk/eclipse/UpdateSite/
@@ -17,6 +26,14 @@ http://www.tuicool.com/articles/YR7jAb
 http://blog.csdn.net/marila4720/article/details/8468327
 http://code.google.com/p/bounding/wiki/SpringMVC3
 http://sishuok.com/forum/blogPost/list/2625.html
+http://blog.csdn.net/will_awoke/article/details/12610887
+http://www.cnblogs.com/Captain-Run/p/46c2e33aabb5270136c4bdbc9b52b1f6.html
+http://1194867672-qq-com.iteye.com/blog/1455814
+http://blog.csdn.net/qq245671051/article/details/47206331
+http://blog.csdn.net/lufeng20/article/details/7598801
+http://ask.csdn.net/questions/246000?sort=votes_count
+
+
 
 Spring注解
 http://blog.csdn.net/courage89/article/details/8446818
@@ -24,6 +41,13 @@ http://blog.csdn.net/courage89/article/details/8446818
 Spring4配置
 http://my.oschina.net/scipio/blog/197629
 http://blog.csdn.net/lqclh502/article/details/23435463
+http://jinnianshilongnian.iteye.com/blog/1989381
+
+
+Spring事务
+http://www.open-open.com/lib/view/open1426816646039.html
+http://blog.csdn.net/sprita1/article/details/8084909
+http://blog.csdn.net/zq9017197/article/details/6321391
 
 Spring4配置错误参考
 http://www.iteye.com/topic/1120924
@@ -33,6 +57,10 @@ http://kennylee26.iteye.com/blog/1473505
 http://blog.csdn.net/peng_hao1988/article/details/6705889
 http://www.blogjava.net/liudawei/articles/390582.html
 
+
+SpringJDBC
+http://www.tuicool.com/articles/Ar6RNr
+http://blog.csdn.net/chszs/article/details/43971981
 
 ExtJS
 http://blog.csdn.net/sun93732/article/details/6909522
@@ -91,3 +119,8 @@ log4j.appender.DailyLog.Append=false
 log4j.appender.DailyLog.DatePattern='.'yyyy-MM-dd
 log4j.appender.DailyLog.layout=org.apache.log4j.PatternLayout
 log4j.appender.DailyLog.layout.ConversionPattern=%p %d [%l]%n    - %m%n
+
+
+
+http://www.hwadedu.com/index/-/contentview/VDtxwTnA2nEb/262965
+
